@@ -1,0 +1,5101 @@
+commit cd32e00a3a461756cbf1f6899a0c2aa5bd5d79ee
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 15:25:09 +0000
+
+    Version 0.8.1
+
+commit bc8485df70203ddefcc27c15fb76e4363637ab43
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 15:24:53 +0000
+
+    NEWS for 0.8.1
+
+commit 9d9523ba8bcac11b19668a7e195ad1eb30f3d051
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:36:16 +0000
+
+    Update Wocky snapshot to fix iChat interop.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=51527
+
+commit 18aa2dc53316a85be7f23d46190b44cb090d2c7f
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 15:06:25 +0000
+
+    Disable deprecation warnings for the stable branch
+
+commit 3227538bb99ccf695aa03efc25a76a7a23d29cbd
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:31:57 +0000
+
+    NEWS for the patches I did not revert
+
+commit 67d77124ce304c8de98c60a52f21f6e30f96a808
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:23:42 +0000
+
+    Revert "Use TP_ERROR instead of long-deprecated TP_ERRORS"
+    
+    This reverts commit cd23b9a835033f837fe266b6eff18df64c41f8c8.
+
+commit 600a3bb495d44a594072f132f4caf3888af41b6a
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:23:34 +0000
+
+    Revert "Use non-deprecated TpIntset APIs"
+    
+    This reverts commit 9ef6d455d1ea4f48bfe300a1b3c5a89061edc81d.
+
+commit 56e59e520745b47206c49db8c7e9de52ff83de05
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:23:30 +0000
+
+    Revert "Use non-deprecated TpMessage APIs"
+    
+    This reverts commit 5c54074f0490f4b5f6b31ecd8f5df011ca32af83.
+
+commit cde4cdb087424bf200502e5e0fa86cb1437d7319
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:23:22 +0000
+
+    Revert "Set G_MESSAGES_DEBUG during testing"
+    
+    This reverts commit b6c32f8840ec4598885108f89d58a5a74ee04af8.
+
+commit 11bcaaa002b82bf16ef0051f77dc2da0e946b3ad
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:23:13 +0000
+
+    Revert "Remove deprecated tp_handle_ref/unref"
+    
+    This reverts commit c452d94fabbdf31c85963c81df3d5d566148f968.
+
+commit e1dbadd08dea266abfba27ec57a53a974539be3e
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:22:37 +0000
+
+    Revert "Update Wocky snapshot"
+    
+    This reverts commit caa206879f23ab24beacdda77e10ab972faff6e4.
+
+commit cbcc429bb56cbdac1e8e88e066de723b306a0c76
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:22:28 +0000
+
+    Revert "NEWS for the patches I just backported"
+    
+    This reverts commit 0eef9ba8a5a68854be43e655a6d3d9e667d648ca.
+
+commit fe20aeaba0f70553039c5e114e466fdfac5226c8
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 14:22:25 +0000
+
+    Revert "Use telepathy-glib's versioned deprecation warnings."
+    
+    This reverts commit a73b0c13faaab99927c44bebac7088d5c24ba6ea.
+
+commit a73b0c13faaab99927c44bebac7088d5c24ba6ea
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 10:32:57 +0000
+
+    Use telepathy-glib's versioned deprecation warnings.
+
+commit 0eef9ba8a5a68854be43e655a6d3d9e667d648ca
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-16 10:12:00 +0000
+
+    NEWS for the patches I just backported
+
+commit caa206879f23ab24beacdda77e10ab972faff6e4
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-11-12 14:34:55 +0000
+
+    Update Wocky snapshot
+    
+    There are no particularly significant changes, but this pulls in the fix
+    for https://bugs.freedesktop.org/show_bug.cgi?id=37701 among other
+    things.
+
+commit 973bff2a35600a56ef8a4afb49a6a0d5df4a384a
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-07-02 15:24:22 +0100
+
+    Don't crash when closing a roomlist channel.
+    
+    TpBaseChannel requires that the 'close' vfunc be implemented, even if
+    the implementation is literally tp_base_channel_destroyed() because
+    there is no clean-up to do. As a result, Empathy pre-emptively
+    requesting a roomlist channel when you open the Join Room… dialog would
+    crash Salut when you close that dialog.
+
+commit 6199eab3f074c3159b31389a37e432bf9f69cd76
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-07-02 15:19:21 +0100
+
+    tubes: don't use an uninitialized tube_id.
+    
+    gcc rightly points out that tube_id may be uninitialized if
+    extract_tube_information() returns false.
+
+commit c452d94fabbdf31c85963c81df3d5d566148f968
+Author: Xavier Claessens <xavier.claessens@collabora.co.uk>
+Date:   2012-05-10 15:10:10 +0200
+
+    Remove deprecated tp_handle_ref/unref
+
+commit b6c32f8840ec4598885108f89d58a5a74ee04af8
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-05-07 19:25:41 +0100
+
+    Set G_MESSAGES_DEBUG during testing
+    
+    The same as Gabble commit cbfa9d06.
+
+commit 5c54074f0490f4b5f6b31ecd8f5df011ca32af83
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-05-07 18:31:52 +0100
+
+    Use non-deprecated TpMessage APIs
+    
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=49594
+    Reviewed-by: Xavier Claessens <xavier.claessens@collabora.co.uk>
+
+commit 9ef6d455d1ea4f48bfe300a1b3c5a89061edc81d
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-05-07 17:21:37 +0100
+
+    Use non-deprecated TpIntset APIs
+    
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=49594
+    Reviewed-by: Xavier Claessens <xavier.claessens@collabora.co.uk>
+
+commit cd23b9a835033f837fe266b6eff18df64c41f8c8
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-05-07 17:17:15 +0100
+
+    Use TP_ERROR instead of long-deprecated TP_ERRORS
+    
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=49594
+    Reviewed-by: Xavier Claessens <xavier.claessens@collabora.co.uk>
+
+commit 077a77aee8fc3bde292f60786059b27cc03e7428
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-05 12:52:25 -0400
+
+    contact-manager: safely return if called after having cleaned up
+    
+    The OLPC activity manager's removed-service callback was looking up a
+    contact after the contact manager had cleaned up (but not disposed)
+    which was causing an assertion. The activity manager should arguably
+    disconnect from said signals...
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 58a36c1de45657a0c3da327ffd90885694623e80
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-04 12:44:41 -0400
+
+    start on version 0.8.1
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit aa7c846dd852ec7eb3900e90e1ed449a813e0d64
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-04 12:36:24 -0400
+
+    version 0.8.0
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8957692941212a9b2ff7bf078d5af90396aa2aca
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-04 12:36:02 -0400
+
+    update NEWS for 0.8.0
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d3da65a4aa110a75c83c90b731a6d274be993c63
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-03 21:23:51 -0400
+
+    ft test: add more assertion failure debug output
+    
+    I am trying to debug this failing test on the buildbot.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3a5c302994130f7ea3ad41b4d6abc9386000f627
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-03 21:07:18 -0400
+
+    ft-channel: don't call gibber_ft_send unless the remote is accepted already
+    
+    This should fixe all the annoying TimeoutErrors in the outgoing file
+    transfer tests waiting for TransferredBytesChanged (salut was actually
+    asserting). \o/
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 85fbec36ec2a24872383bc52b91e34ab79d435d0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-03 21:02:04 -0400
+
+    gibber-oob-file-transfer: assert we have a message before using it
+    
+    If we g_signal_connect (NULL, ...), it will not work, so let's fail
+    earlier.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0a5092500b67d70217a9ce361f660d54f8c842b2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-03 17:31:01 -0400
+
+    muc-channel: re-add 'creator' property
+    
+    Turns out I misunderstood this property before when porting to
+    TpBaseChannel in 2e6d62f0e735bf4f774f and thought it meant
+    requested. Let's re-add it to make avahi/tubes/two-muc-stream-tubes.py
+    pass again.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit dd68cade4b99f9ff8ae865e8e4a09eb87dfadfdb
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-04-03 09:58:18 -0400
+
+    muc-channel: fix reference to SalutConnection in OLPC code
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3886d5677d37277dea95a3a07d9987cb767a0160
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-26 12:35:22 +0100
+
+    Compile everything before we test it
+    
+    Without this change, sidecars.py fails under "make check" in a clean tree,
+    because the plugins haven't been built when we recurse into tests.
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f4dcbd1019c60b2688e46f0822ce9f4adeb87618
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 20:32:46 +0300
+
+    Start 0.7.3 dev
+
+commit 096914a312598fb07812322a76430cf5f41b9265
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 20:20:56 +0300
+
+    Prepare release 0.7.2
+
+commit d50b55de17f23c4ec72c33cbc6d3d0c149f185e3
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 19:02:28 +0300
+
+    Update NEWS
+
+commit db88e270f0bc21c5eb951f89b99756507ba2d705
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-22 12:59:06 -0400
+
+    file-transfer-channel: Fix file transfer on windows.
+    
+    Fix file-transfer-channel so that it handles file transfers
+    on windows, The current code is designed not to support file
+    transfers on windows.
+    
+    Reviewed-by: Olli Salli <olli.salli@collabora.co.uk>
+
+commit 0214165231a87ab046eb223365cc67d29caad4b3
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 18:44:08 +0300
+
+    Update README
+
+commit 3085c330a2251850904464626b01ed8b236289c7
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 18:40:01 +0300
+
+    Update NEWS
+
+commit 8f19f6a49cc6affb7b100f6a711f41af0c90eb40
+Merge: a7e8bc4 79b2f7b
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-26 18:37:06 +0300
+
+    Merge remote-tracking branch 'siraj/fix_review'
+    
+    Reviewed-by: Olli Salli <olli.salli@collabora.co.uk>
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 79b2f7bed48e64569291464dbcb7d1b42a67e709
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 15:52:22 -0400
+
+    bonjour-contact: Remove unwanted debug messages
+
+commit 7862ef54e777add5febcb8160384726a62547c18
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 13:55:41 -0400
+
+    bonjour-contact: Handle new Address resolves while another is in progress
+    
+    We leak if another address resolve starts while another is in progress
+    so we avoid this by stoping the in-progress operation and starting
+    the new one after freeing the record and address_refs properly. The
+    patch also cleans up freeing resolver context data.
+
+commit d7cb7b863e3de66bfe1f506a8879d180e1534637
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 12:55:08 -0400
+
+    bonjour-contact: store copies of name, type and domain
+    
+    name, type, domain might change over time to make sure resolving
+    works correctly, we keep a copy of them in our context
+
+commit cbb9922cadf0306f0605e5ae3a4d3eb976f6a0f9
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 12:47:11 -0400
+
+    bonjour-contact: Avoid passing pointer to pointer into  GetValuePtr
+    
+    TXTRecordGetValuePtr expects a pointer to a char not a pointer to a
+    pointer
+
+commit 3386256c58474da4a324b540a20c0f17d773ac2d
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 12:43:09 -0400
+
+    bonjour-discovery-client: Remove redundant checks in drop_svc
+    
+    The hash tables are never  null since they are initiliazed in init.
+
+commit 51f7d9869d2fcb29f588fe7ba6c1954edbc08e9a
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 12:36:03 -0400
+
+    Avoid passing DNSServiceRef pointers between private structs.
+    
+    This change is to avoid dereferencing dangling pointers, since we
+    are using pointers to DNSServiceRef in our mappings.
+
+commit a85536dcf3e76b285bd4a9ab45638df2e9eade95
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-25 12:16:14 -0400
+
+    bonjour-contact-manager: Unref contact only if it has no services
+    
+    We remove the contact ref only if it has no services
+
+commit 39b2dbcf375dbe97c5d5523ad2de7d456757d072
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-13 18:54:10 -0400
+
+    bonjour-contact: Introduce Bonjour Contact
+    
+    Bonjour Contact similar to avahi Contact
+
+commit 183f2d474c770eba30c6e95469a3523597bea682
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-24 21:01:56 -0400
+
+    bonjour-self: Avoid removing msg from record if it's missing
+    
+    Avoid removing msg value from the TXT record if the key doesn't
+    exisit. Trying to do so results in KDNSService_NoSuchKey error,
+    and it fails the set_presence operation. which leads to many complications.
+
+commit 685e3df4c7e1aa7d8fe3955f5040126129708f45
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-23 06:07:44 -0400
+
+    build: remove capability-set from CORE sources
+    
+    This leads to crashes since it's really part of the plugins library
+    so when plugins try to access static variables in cap-set leds to
+    crashes on windows.
+
+commit fb036a83780d8bdd69c0bc359182665064a9a8e5
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-17 02:06:34 -0400
+
+    bonjour-discovery-client: Move Socket processing methods to a common place
+    
+    With libdns_sd API we need to process the socket when registering,
+    browsing, and also when resolving, So we add the socket watch method
+    to bonjour-discovery-client so we can share this method in bonjour-self/contact
+    and bonjour-contact-manager
+
+commit 0569559273adfa2f8fb17454aad8ca086d327fc8
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-13 16:27:40 -0400
+
+    bonjour-contact-manager: Start browsing for bonjour service
+    
+    Patch to enable Bonjour Browsing, and start looking for near by
+    computers.
+
+commit 1ec0cf3ca5241de215e5bf990b1c2239256c8e47
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-13 15:45:02 -0400
+
+    bonjour-contact-manager: Remove Dead code copiled over from Avahi
+    
+    Clean up dead and commented out code from bonjour-contact-manager
+    so that it doesn't look very strange when we add the actual working
+    code to it.
+
+commit 62717a3a7bd417187ee445c755e06ded1ee6bc15
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-22 01:06:11 -0400
+
+    bonjour-self: Remove duplicate Socket processing method
+    
+    bonjour-discovery-client now takes care of socket processing
+    and cleaning them up, we remove the duplicate socket handling
+    from bonjour-self with this patch.
+
+commit bd8a37c7b3e29babe683a1f1bb65419be1cc3fdc
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-18 01:09:26 -0400
+
+    bonjour-self: Announce the service name properly
+    
+    We need to pass published_name@host when registering for the service
+    current code passes NULL, which lets mdns choose it's name.
+
+commit bf19af806ceeff965a54a6c95b1bd5f149552439
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-16 23:16:37 -0400
+
+    build: Fix linker errors when linking libsalut-plugins
+    
+    Add the required GLIB_LIBS linker flags so that libsalut-plugins
+    links properly on windows/mingw32
+
+commit a7e8bc4c56eeab229147630b06b9ce395018bae3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-23 15:38:31 +0000
+
+    Eliminate trailing whitespace so make check can pass again
+
+commit 53d069ae0f6cc3f0457a837d58496c79304190f7
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-23 15:10:18 +0000
+
+    Replace plugindir with an AC_ARG_VAR so it can be passed to configure
+    
+    Similar to https://bugs.freedesktop.org/show_bug.cgi?id=46417 in Gabble.
+    
+    This lets you configure the plugin directory:
+    
+        ./configure pluginexecdir='${libdir}/my-salut-plugins'
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=47774
+
+commit 4b2480d928b3a3083ba21010607239cb8f85a40e
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-23 15:06:00 +0000
+
+    Install non-ABI-stable libraries used by plugins to a private directory
+    
+    Similar to https://bugs.freedesktop.org/show_bug.cgi?id=46417 in Gabble.
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=47774
+
+commit e5ff6de77fbd5e02e8db5a7fcd1576fdc98d6343
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-23 15:05:23 +0000
+
+    Avoid non-portable use of += in configure.ac
+    
+    Similar to https://bugs.freedesktop.org/show_bug.cgi?id=46417 in Gabble.
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=47774
+
+commit f67e56cc663593c0bb52f3e2a66970c81b8f77f3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2012-03-23 15:04:51 +0000
+
+    Avoid Wocky trying to install into --prefix=NONE
+    
+    Similar to https://bugs.freedesktop.org/show_bug.cgi?id=46417 in Gabble.
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+    Bug: https://bugs.freedesktop.org/show_bug.cgi?id=47774
+
+commit bcd37858f4b36c3123919d80200f77deeb0b8db3
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-03-19 21:01:12 -0300
+
+    g_thread_init() is deprecated but still needed in GLib 2.30 and older.
+    Salut calls g_type_init(), which implies g_thread_init(NULL), and
+    depends on GLib 2.24, so it doesn't need to initialize threads
+    explicitely. Therefore, it is safe to remove the call in this case
+
+commit 53eb0c4fb637b50c808405593e4fec783d074b2b
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 21:18:24 +0200
+
+    Update NEWS
+
+commit 0868718f1a39aaf728ba722dcb85658bc0cd2e8a
+Merge: 8005653 accadcc
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 21:15:22 +0200
+
+    Merge branch 'plugin-api-fix'
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit accadccb6cde087715eeadc526ebc9ff50208d66
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 21:14:53 +0200
+
+    Update wocky submodule pointer to version with wocky_send_ll_pep_event
+
+commit 11d051ae6a911f63fd321ba7c5356023c434fd85
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 19:56:16 +0200
+
+    SalutPluginInitializeImpl: Replace the protocol ctor callback with a vtable of callbacks
+
+commit baa911b465906bc8b362d2e660fdd0b3911c0dc1
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 19:41:32 +0200
+
+    Remove SalutPluginContact and salut_send_ll_pep_event
+    
+    They've been superseded by stuff in Wocky
+
+commit ec16dd86f829b08af1990521f810535950ea367d
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-16 19:30:53 +0200
+
+    SalutContact: implement WockyXep0115Caps::has_feature
+
+commit 049df2b8be6b0e78a6fe3b5d876c7a75f81ddb16
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 20:31:45 +0200
+
+    Add wocky to LIBS salut plugin API pkgconfig files
+    
+    Because it's not yet a proper library with its own pkgconfig file
+
+commit a9023d868ebda36a2dc7e1c6da7f25f9d458a169
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 19:55:56 +0200
+
+    Remove protocol.h from the plugin API
+    
+    We can't include anything in it in the plugin support library, so it's fairly useless there. Plugins
+    have an opportunity to create custom protocols by using the function pointer given to them in the
+    initialize() function.
+
+commit fb72f2501a61a1b2721ee157d6d0db74e487f92a
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 19:40:59 +0200
+
+    Completely eradicate the dependency to salut_protocol_new from the plugin lib
+    
+    plugin.c is part of the plugin lib, so we can't mention salut_protocol_new there either. Therefore
+    it has to be referenced all the way in the plugin loader, which is in salut core.
+
+commit 0f7261358bb7fb8356c908e807f8c0c52318fbed
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 19:39:52 +0200
+
+    Fix coding style distcheck issues from Alvaro's plugin API commits
+
+commit eb0c1149008f86cbe2101c9bcf64c6f0975031b5
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 19:36:11 +0200
+
+    Build wocky and the plugins library as version-specific shared libraries
+    
+    Because they don't yet have a stable ABI.
+
+commit 98e6bd6646d30615678e6be401e71e27c328548e
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-03-14 19:36:11 -0300
+
+    Moved caps-channel-manager to the plugins library, as the code is used
+    in the plugin and not in the core code.
+    This solves dependency issues in the plugin library
+
+commit 19539e3418641cd379e80a69d3243db5537e0dc3
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-03-14 19:29:54 -0300
+
+    Move plugin library-specific code from util.c into its own file, to
+    prevent dependency problems
+    As part of this, a new SalutPluginContactInterface had to be created to
+    access contact capabilities that were needed for the plugin utils.
+    Accessing SalutContact directly would bring most of salut core in, so a
+    GInterface is used, similar to what is done with SalutPluginConnection
+
+commit 5754bc81e3f94589d91820fe34975dfb63730f28
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-03-14 19:18:05 -0300
+
+    Use a callback to get custom SalutProtocol in the plugin library, so
+    that plugin code does not depend on salut core code.
+    
+    The ytstenut plugin creates a custom SalutProtocol in its initialize()
+    method but salut_protocol_new recursively depends on loads of salut symbols
+     through its use of salut_protocol_get_type(), so replaced direct binding to it
+    with a callback
+
+commit 8005653315f77ce15ecd53c8875bd2a4072d292e
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-15 21:53:35 +0200
+
+    Update NEWS
+
+commit 081532ec0c4e817b7c6fb52579012d5f18738325
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-15 15:42:03 -0400
+
+    connection: Add TP_CONNECTION_INTERFACE_CONTACT_LIST to the interface list
+    
+    Without it we clients can't list the contacts provided by salut. and results
+    in an error "doesn't implement org.freedesktop.Telepathy.Connection.Interface.ContactList"
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=31729#c7
+    
+    Reviewed-by: Olli Salli <olli.salli@collabora.co.uk>
+
+commit e7ed667b46b4afb2dd426fd683a286f0ff3cf96a
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-13 15:15:22 -0400
+
+    bonjour-self: Fix compile problem by adding the missing brace
+    
+    The missing brace from the previous commit results in a
+    compile error.
+    
+    Reviewd-By: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c7f5aa9f79a1d4c4f99f3c8f56ce46918fe6cb83
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-13 13:49:09 +0200
+
+    Update NEWS
+
+commit 1fdd43a2bce59761dc4d7a6c99dbb0ebcb02b423
+Merge: 91739c7 1fa8e3d
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-13 13:42:16 +0200
+
+    Merge remote-tracking branch 'siraj/bonjour_windows'
+    
+    Reviewed-by: Olli Salli (oggis) <olli.salli@collabora.co.uk>
+    Reviewed-by: Jonny Lamb (jonnylamb) <olli.salli@collabora.co.uk>
+
+commit 1fa8e3da3c2ba2438757457d1893c8fe72bc9169
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-12 20:01:26 -0400
+
+    file-transfer-channel: Fix Compile issues under Windows/mingw32
+    
+    Move Unix specific variables and headers into G_OS_UNIX. Please
+    note this does not enable TP_SOCKET_ADDRESS_TYPE_IPV6 or TP_SOCKET_ADDRESS_TYPE_IPV4
+    it just fixes compile issues. Such changes will be done later.
+
+commit 1dd6a66ea92477803b6d7959e55707251ba29519
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-12 19:47:22 -0400
+
+    build: Use gio-windows-2.0 when cross compiling
+    
+    The current windows build fails since we are unconditionally looking
+    for gio-unix-2.0, when building for windows we should look for
+    gio-windows-2.0, and then export the flags accordingly.
+
+commit 5d706cc7571f5c15fbbab8bf0a0577f9876c77cb
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-07 02:33:54 -0500
+
+    self : pass the correct error pointer when calling set_avatar of the child
+
+commit 1f02a3352f12be80bc8cf6975d4c720aab92e049
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-05 13:12:40 -0500
+
+    protocol : Adapt protocol to support bonjour backend
+
+commit a6c322878491e83526be603e7bf39434888734a0
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-05 13:06:07 -0500
+
+    connection: Use MUC and roomlist only with Avahi
+    
+    Bonjour port doesn't support roomlist or MUC
+
+commit 8db05b15724e2de49b29748f43dbcb371d3faac5
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-05 11:47:07 -0500
+
+    connection: use si-bytestream-manager only for avahi
+    
+    Tubes, and MUC are not supported by the initial port of bonjour backend.
+    so disabling it for bonjour backend
+
+commit 53211e40938ed036264d4a09cd676f1a72025996
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-05 11:38:23 -0500
+
+    salut: Use bonjour discovery client
+    
+    Use the bonjour discovery client when we use the bonjour backend
+
+commit 166d60b88a717a9b1548e78b6369517ecf5fd999
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 21:28:41 -0500
+
+    debug: Make SALUT_DEBUG=discovery work
+    
+    "discovery" string should match to DISCOVERY not DISCO. as a results
+    we can see any debug out put when we run tp-salut with
+    SALUT_DEBUG=discovery
+
+commit 22540b4416230585147522f948057ee107448866
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 21:25:31 -0500
+
+    bonjour-self: Introduce BonjourSelf
+    
+    A new BonjourSelf which extens SalutSelf to support bonjour
+    services.
+
+commit 6755283399b1c7fb819e79fed6eafaec8ec69bcb
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 21:15:34 -0500
+
+    bonjour-contact-manager : Dummy ContactManager
+    
+    Dummy ContactManager until bonjour-self is ready
+
+commit c98308f820b00d4f01276af8bb1a182350f7b3bf
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 20:46:02 -0500
+
+    bonjour-discovery-client : Introduce Bonjour discovery client
+    
+    A new BonjourDiscoveryClient similar to AvahiDiscoveryClient to handle
+    Bonkour API
+
+commit c2c156817b6fb3ded558e711a90d6cfa0d217bf8
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 20:43:59 -0500
+
+    build: Adapt Makefile.am to use USE_BACKEND_BONJOUR
+    
+    Changes required to handle bonjour backend sources in Makefile.am
+
+commit 4f398f8354d5b786b7f4a199f4c3962778a4c8c4
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 20:01:39 -0500
+
+    build: Introduce libdns_sd backend for --with-backend switch
+    
+    Check for libdns_sd when configured with backend option "bonjour"
+
+commit 0dfe7d75b2c01e575ab51e49358fde81fe538603
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-03-03 18:27:34 -0500
+
+    muc-channel: Remove redefinition of SalutMucChannelPrivate
+    
+    SalutMucChannelPrivate is already defined in muc-channel.h so removing it
+    from muc-channel.c.
+
+commit 91739c7079504cf1d15e6c43ffbf48620d25c22c
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-09 19:34:27 +0200
+
+    Update NEWS
+
+commit 3b95f8b51146959a52c5ba5302c8372430170afa
+Merge: a7f90f9 281b73e
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-03-09 19:27:00 +0200
+
+    Merge remote-tracking branch 'tdfischer/tdfischer/gsocket-file-xfer'
+    
+    Reviewed-by: Simon McVittie (smcv) <simon.mcvittie@collabora.co.uk>
+    Reviewed-by: Jonny Lamb (jonnylamb) <jonny.lamb@collabora.co.uk>
+
+commit 281b73e00360cc88d301b7cd6e0bb9d80a975c92
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-23 16:32:09 -0500
+
+    Merge ipv4/6 testing into the file transfer tester so any test can be ran without unix sockets
+
+commit b1bea350bb1a86122e50af3a0ce2570940ad89d1
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-23 10:47:34 -0500
+
+    Cleanup code formatting, errors, warnnings, and use of TpSocketAddressType
+
+commit c5af9d07e5d6327ab4479435b20614f71b9f8552
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-23 10:26:21 -0500
+
+    Stop leaking the underlying GSocket
+
+commit 053775004d2a5bf0e96199b193db4ea9eaaa1116
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 16:29:11 -0500
+
+    Implement support for testing sockets that are not AF_UNIX
+    
+    Actually test IPv4/6 sockets
+
+commit 47e7793ebb36b6192d812ecc6446adaafec897d2
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 16:28:51 -0500
+
+    Add IPV4/6 availability tests
+
+commit 48e9bae82dd249d4d36998f782c809ce0b2d6ad2
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 16:28:20 -0500
+
+    Unify socket creation methods
+
+commit 2c2df6e146a7711f36aac9ed88e658bdd33fb60e
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 16:28:08 -0500
+
+    Announce support for ipv4 and ipv6 sockets
+
+commit 3f619bb5576951ee02d3b9d81578288a86954741
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 14:40:24 -0500
+
+    Generalize salut_file_transfer_channel_finalize to handle any kind of socket cleanup
+
+commit bd11992e09ff395417e5c2a604a4f2ae952cfb7e
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-22 10:19:47 -0500
+
+    Use GSocket for unix sockets in file transfer code
+
+commit bcf830732d36945a863ccb83bc40c7bed704eb07
+Author: Trever Fischer <tdfischer@fedoraproject.org>
+Date:   2012-02-21 17:37:56 -0500
+
+    Implement IPV4/6 with GSocket API and write IPv4 tests
+
+commit a7f90f99a38181ab05353296f0c7b6eaf3b664f4
+Merge: a842971 5a78e81
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-02-29 15:36:48 -0500
+
+    Merge branch 'cleanups'
+
+commit 5a78e81a093ed320f1a3ed4a3018fefd60bc6f46
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-02-29 15:35:39 -0500
+
+    muc-channel: use one property pair per line with g_object_get
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a842971ca3c1aa11c3495fd88ddcad89eee321c0
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-02-23 00:19:12 -0300
+
+    Fix Android build after plugin library refactor
+
+commit fe007161af92fc84875610752b7cf7ca2ca4d1d1
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-22 21:31:45 +0200
+
+    Update NEWS
+
+commit dc721271f31a487de11f05f9b580a0c2760bd971
+Merge: 44cc945 efa82fa
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-22 21:19:00 +0200
+
+    Merge branch 'build-with-dummy-on-windows'
+    
+    Reviewed-by: Olli Salli (oggis) <olli.salli@collabora.co.uk>
+    Reviewed-by: Simon McVittie (smcv) <simon.mcvittie@collabora.co.uk>
+
+commit efa82fa6e961b2119fbb51513e9410d9237e8a12
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-22 21:18:35 +0200
+
+    Fix stuff caught by check-coding-style in siraj's code
+
+commit fbaff05740530f3df8519ac2c37503c2d0401a2f
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:05:42 -0500
+
+    telepath-salut: Include socket headers only on Unix
+    
+    Unix specific socket headers should not be included unconditionally,
+    since it's not supported by Windows.
+
+commit 8bf98188488163814ee6348d432254ff15e8690b
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:09:43 -0500
+
+    salut: Support using the dummy backend
+
+commit a538471869a8ed140036dfa1896ae6b70df9c2e8
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:07:05 -0500
+
+    protocol: Use the backend defined by the user
+    
+    The protocol now supports both dummy and avahi backends.
+
+commit 7e845a20dc6ebec8ce848d2f735eec3731346d9f
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:10:50 -0500
+
+    tubes-stream: Make it compile under windows.
+    
+    ifdef Unix specific code similar to tubes-stream in gabble
+
+commit 57bfaa0d773041315d28e7fb09d412209afc9405
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:04:25 -0500
+
+    salut-connection: including avahi header only when we use USE_BACKEND_AVAHI
+    
+    Including the file without any condtions results in a compilation error
+
+commit 7aa9d6fa535378f475f5e71a4b963a47b65f7f22
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:02:55 -0500
+
+    build: Include Avahi source when compiling --with-backend=avahi
+    
+    Include Avahi sources only when we compile avahi not always
+
+commit 6869cb46dad2e0cd447e3ffe232005bf48ae12f2
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 20:00:55 -0500
+
+    write-mgr-file: Use $(EXEEXT) when compiling for windows
+    
+    If we don't append this to the bianry the build system will try to
+    recompile write-mgr-file again with the wrong parameters and the
+    build fails
+
+commit b94f06b6b1f1a16ea574b5eebc019206d448a028
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 19:55:58 -0500
+
+    configure.ac: Add --with-backend option to choose the backend
+    
+    Add --with-backend=avahi and no option to configure script
+    and define USE_BACKEND_AVAHI/DUMMY so we can selectivly
+    include the headers and protect the code as needed. Using
+    --without-backend is equlant to using --with-backend=no
+
+commit ff906d265400a20a53b4c9f0cc5ac8b3740747e4
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-17 18:06:25 -0500
+
+    file-transfer-channel: Disable file-trasnfer for Windows
+    
+    setup_local_socket returns false if the platform is not unix, so
+    salut_file_transfer_channel_accept_file and salut_file_transfer_channel_provide_file
+    will fail with errors on windows.
+
+commit 8fd520709a4bed634e2786c0fc86f167f96c5264
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-13 15:19:52 -0500
+
+    build: Detect The platform at conifgure time
+    
+    This patch adds $platform variable to the configure script and
+    OS_WINDOWS AM variable which can be used with Makefile.am files
+
+commit c4750614c6fe5851f488a595ccf5dd49c218f682
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-20 18:19:53 -0500
+
+    build: Define _WIN32_WINNT=0x0501 when compiling tp-salut
+    
+    -D_WIN32_WINNT=0x0501 need to be defined for getnameinfo to work
+    when cross compiling for windows
+
+commit f0e85dcba7ce74f22abf22c5e64c372fdc268eda
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-13 16:02:44 -0500
+
+    gibber: Make gibber cross compile with mingw32
+    
+    The patch provides the changes required to make gibber
+    compile under mingw32.
+    
+     - Index is replaced with strchr since index is deprecated
+      and not included in mingw32 sdk
+     - D_WIN32_WINNT=0x0501 is defined to make  getnameinfo work
+     - And other compile fixes
+
+commit 83eb3db22091ddbbfd44eeed79290bcd71d4a310
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-15 23:12:12 -0500
+
+    build: Fix linker errors from libsalut-plugins.dll
+    
+    The build doesn't output libsalut-plugin.dll since telepathy-glib
+    is and wocky libs are not added to libsalut_plugins_la, and debug.c
+    is not part of the libsalut_plugin_la sources.
+
+commit 44cc9454696cf5e3f1d21fc1d51b46500f2f78e5
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 21:01:34 +0200
+
+    Start 0.7.2 dev
+
+commit d5c79218492a6a236772fc5c832323a39337fa59
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 20:21:47 +0200
+
+    Update NEWS
+
+commit a801ccbfddd3ba3c6d75f59110e0ca0f6b474285
+Merge: 0de0f85 2afed96
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 20:18:05 +0200
+
+    Merge branch 'Early2000sLinuxUser'
+    
+    Reviewed-by: Simon McVittie (smcv) <simon.mcvittie@collabora.co.uk>
+
+commit 2afed9602d88fda812fb3a0d3e4678039cd3862b
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 20:00:44 +0200
+
+    Make receive-file-ipv6 test be reported as SKIP with no IPv6
+
+commit 4e94a954362adb866ca270d1299c691f36e20c67
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 19:55:55 +0200
+
+    receive-file-ipv6 test: Don't even try to listen if IPv6 is disabled
+    
+    Because that just threw up for me.
+
+commit b552f83134d21bd9b618f25f6e9d6e18e22dbbda
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-21 19:45:31 +0200
+
+    Fix IPv6 enabled check in avahitest.py
+    
+    With my IPv4-only system, already the socket() call fails with EAFNOSUPPORT. So that should be
+    inside the try: section as well
+
+commit 0de0f8560b993b69be80f1b12eb4731a0bcd73f0
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-20 16:24:19 +0200
+
+    Version 0.7.1
+
+commit 40c6534d144b0e69b4a96040f031277e57383b55
+Merge: 438bafb c4508d0
+Author: Olli Salli <olli.salli@collabora.co.uk>
+Date:   2012-02-20 16:13:19 +0200
+
+    Merge remote-tracking branch 'siraj/plugin-api'
+    
+    Reviewed-by: Jonny Lamb (jonnylamb) <jonny.lamb@collabora.co.uk>
+    Reviewed-by: Olli Salli (oggis) <olli.salli@collabora.co.uk>
+
+commit c4508d097d735e52fbd4d5a50177ba9ad6744595
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-03 17:54:41 -0500
+
+    plugins: Create a new library libsalut-plugins containing the plugin API
+    
+    The patch moves the symbols required by plugins, into a new library
+    libsalut-plugins.la
+
+commit d26187345ce6fb1370139b8bac75eebcf5d082d7
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-16 13:46:37 -0500
+
+    salut-connection: Merge src/connection.h and salut/connection.h
+    
+    SalutConnection is not used by plugins anymore so this patch merges
+    src/connection.h and salut/connection.h into a single file.
+
+commit f4c3aaf503acb9d26f15d8cb21432b9dfbf7e51a
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-03 17:11:03 -0500
+
+    plugins: Replace SalutConnection with SalutPluginConnection in plugins
+    
+    This patch removes the use of SalutConnection in plugins and code
+    related to loading and defining the plugin API.
+
+commit 2d9394fb317626a07105fc91f3a392d357d5f91c
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-02-03 12:36:31 -0500
+
+    plugins: Introduce SalutPluginConnectionInterface interface
+    
+    The library defines a new SalutPluginConnectionInterface which will be
+    implemented by SalutConnection. And plugins can use SalutPluginConnection
+    instead of using SalutConnection directly. This helps us to hide
+    SalutConnection symbols in plugins.
+
+commit a6f77caf370037002d2452e27e2d46feac7360aa
+Author: Siraj Razick <siraj.razick@collabora.co.uk>
+Date:   2012-01-31 16:13:30 -0500
+
+    plugins: Change the plugin API to create_sidecar_async and create_sidecar_finish
+    
+    All Salut plugins should implement these two methods hereafter. This
+    patch also updates all the internal plugins to use this new API
+    This way the host doesn't need to call finish on GAsyncResults that are
+    created by the plugins.
+
+commit 438bafb7d716d61e7d0243eef2921f818e740b40
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2012-02-17 10:29:07 -0300
+
+    Fix hardcoded library in write-mgr-file
+
+commit 8b1465614f42782f464cd6a008237711b21ac2ba
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2012-02-06 15:31:00 +0000
+
+    Update Wocky snapshot for one big header.
+    
+    We have to lose the reference to wocky_heartbeat_source_new from the
+    symbol hack table, because it's not exposed in Wocky's public headers
+    any more. That's okay, though: it's not intended for use by
+    applications, let alone plugins.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=45703
+    Reviewed-by: Simon McVittie <simon.mcvittie@collabora.co.uk>
+
+commit 86edee63407e092fa9f9996fa6b953ab2545e89f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-02-01 14:06:10 -0500
+
+    roomlist-channel: subclass TpBaseChannel
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1850348fac4651d7cba09fe8fbef7418a8ddb73c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-01-31 21:38:35 -0500
+
+    file-transfer-channel: subclass TpBaseChannel
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2e6d62f0e735bf4f774feb7dfa0d431c99e3d3b5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-01-31 21:03:52 -0500
+
+    muc-channel: subclass TpBaseChannel
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 85ce3589a35ae29cd9bbea3cfd1d9a1cdf136ec1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-01-31 19:10:37 -0500
+
+    im-channel: subclass TpBaseChannel
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f012cb6b5e016c322fc0ad99f64acf132a4e1f9e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2012-01-05 13:48:10 +0000
+
+    two-muc-stream-tubes: use temporary file as unix socket path
+    
+    This is all an attempt to make the unix path socket path shorter.
+    
+    Fixes: fd.o#44020
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f312040d789a823a66a3c044ceaf7da3064529fc
+Author: Alvaro Soliverez <alvaro.soliverez@collabora.co.uk>
+Date:   2011-11-02 10:31:17 -0300
+
+    Support building for Android.
+    
+    This adds an autogen.sh and configure flag, --disable-submodules, to
+    disable fetching the Wocky submodule (the flag is plural for consistency
+    with other components), adds some missing compiler and linker flags, and
+    adds targets for Androgenizer.
+    
+    Modified from a patch contributed by Derek Foreman.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=42515
+
+commit b7cfa229c65ecba4d4a5e9e0ea90331e9d5bb269
+Author: Xavier Claessens <xclaesse@gmail.com>
+Date:   2011-11-16 15:35:10 +0100
+
+    Use _unref instead of _free _destroy when possible.unref
+    
+    Replace g_(ptr_)array_free (foo, TRUE) and g_hash_table_destroy
+    with respectively g_(ptr_)array_unref (foo) and g_hash_table_unref.
+    
+    I used this command to generate this patch:
+    for f in `find -name "*.c"`; do sed -i $f -re 's/g_ptr_array_free \(([^ ,]+), TRUE\)/g_ptr_array_unref \(\1\)/'; done
+    
+    See Danielle's blog for explanation of possible bug _free can do:
+    http://blogs.gnome.org/danni/2011/11/16/mistakes-with-g_value_set_boxed/
+
+commit 54f726c81670463a8bf16b4cd002d258f03aa05a
+Author: Xavier Claessens <xclaesse@gmail.com>
+Date:   2011-11-16 15:34:27 +0100
+
+    Add coding style check for g_hash_table_destroy and g_array_free usage
+
+commit f404ed643a3d4b5af65fb5816a32b2d042d5d880
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 10:34:40 +0000
+
+    bump nano-version
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b76c7452300f5e81d2ffe96973fe568504ae3e3d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 10:09:49 +0000
+
+    version 0.7.0
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c1b70a2413c41d8f94b44cf41484050695eb1d60
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 10:20:46 +0000
+
+    tests: include xmppstream and ipv6 in EXTRA_DIST
+    
+    How on earth did this work before?
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 18a669f7e222aa86a4c8a165ba1dc20cb50c7c58
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 10:02:12 +0000
+
+    NEWS: updated
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8365e7709268d8e6b738fe9e2477314a5a8ecdef
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 08:58:09 +0000
+
+    ft helper: use crazier stock metadata
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c84e19dfd4d6714b6f3a88c8f04231aeba453183
+Merge: bc9ae56 fc23a86
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-16 08:53:50 +0000
+
+    Merge branch 'ft-metadata'
+
+commit bc9ae568196b3621a19e208f59ebadb2c068ef27
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-15 10:11:48 +0000
+
+    wocky: update snapshot for sasl fix again
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8b964be6eaf563e919d062b7ee6e5d5cad66b50e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-15 09:14:19 +0000
+
+    wocky: update snapshot to fix sasl build failure
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit fc23a8623e7ec3ab9e7f39381367c7d46dc73c7f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-15 09:01:01 +0000
+
+    ft metadata: use tp-glib generated code rather than using the draft interface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 20b6d3c332d5bf1acaa928aba0be06853cc19783
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-15 08:59:58 +0000
+
+    configure: up dependency on tp-glib
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4c1f77918863361e2b44171f11cc82379b936354
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 19:36:04 +0000
+
+    metadata: update to new draft
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit cab22c8a694a21b48073f572baf49c907ce2bf9d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:33:15 +0000
+
+    ft-client-caps test: clarify caps dict building
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e06f69ebeaded3ca058f0b8284c99fa877229bb7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:30:56 +0000
+
+    ft-manager: use nicer tp_g_value_slice_new_* functions
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8301cfa529c78b18a3aa1c956174f7497f139b5a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:29:33 +0000
+
+    ft-manager: clarify argument name
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 57358a9583c236887ecad3eee7f95d92df992259
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:28:45 +0000
+
+    twisted tests: use conn.Requests isntead of making a dbus.Interface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 95c08235df1830bea849d525c7ada75c171f407f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:27:15 +0000
+
+    ft-channel: simplify adding fields to dataform
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9447abfcd7cc2db7bce778ba65b9b1f81586d5c9
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:27:00 +0000
+
+    namespaces: change FT metadata namespace
+    
+    "and… im: is not a URI scheme. http://telepathy.im/..."
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1fa63b2d5417dbdc9a2e6fa35f76592375f4840a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:22:52 +0000
+
+    ft-channel: use a more appropriate GQueue than a GList
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 799d74657c2564e246ccba046899af9c8b5b1a81
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-11-09 17:22:41 +0000
+
+    ft-channel: deal with bad ServiceName fields
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit edd05599c1af88d6ebe236d943df700985cbf38f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 18:44:12 +0100
+
+    ft tests: add tests for FT service name caps
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 21ae0b44c562c7b10436badf370b45cb39c7c815
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 18:11:47 +0100
+
+    ft-manager: remove forcibly adding FT channel class to self contact caps
+    
+    If we stop at this point, specific FT services won't be added to the
+    self handle's contact caps. It's also completely unnecessary to
+    special case this.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit aa920049bbafadb7af1dc3cc652bfc5ce9b29b50
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 18:11:07 +0100
+
+    caps-helper: update disco helper method to work with Salut
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b1a002fbbcbd758261290e665940f82ea07ee57e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 16:13:10 +0100
+
+    ft-manager: advertise file transfer services with capabilities
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a93f43a6ff1dce06ca0367ad8d8e4fa60b080220
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 14:16:04 +0100
+
+    ft-manager: fail to create channel if the contact doesn't have the right caps
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit da7d8af161a632ab032aa37a29c71aa801016e17
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 12:34:07 +0100
+
+    file-transfer-helper: let salut disco our announced caps
+    
+    Note that a few tests implement their own announce_contact methods,
+    but if you don't advertise a caps hash salut will just assume FT
+    capabilities for legacy clients (iChat I guess).
+    
+    This will break once support for looking at contact capabilities and
+    only sending metadata to ones who support it is implemented.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c786795145bbf692eed9a8372d499232b74fcfde
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-28 11:12:47 +0100
+
+    caps-helper: fix typo in make_caps_disco_reply
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit edce1ee89f449e31beeca18c47e6fde48add43d6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:41:31 +0100
+
+    ft-manager: only advertise Metadata support for those who support it
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 430514bccb385ebfed07618d9e6dce3764aeddda
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:28:40 +0100
+
+    capabilities: advertise support for the TP FT metadata extension
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6084cf0931068c84fa61d21e9d280a67597a54ce
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:19:30 +0100
+
+    metadata test: ensure we get an error with a bad Metadata property
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9baa2ca53c901b7d33ab7bbf49232673c163328f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:17:47 +0100
+
+    metadata test: test receiving an offer with no dataforms
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 34529237a47c3833aebd479050af7a62dedf69f6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:15:15 +0100
+
+    ft-helper: test parsing incoming offer metadata
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4f71a9a8eb76ab7139172f57f8ef1e79364eebeb
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 17:14:43 +0100
+
+    caps-helper: split out add_dataforms function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1f39d6e66d3a3c83cd756810fa11ac52681f60c5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 16:49:10 +0100
+
+    ft tests: add simple metadata test
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c02da80c845f7852451c79a18c473f883900a4c0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 16:18:43 +0100
+
+    ft-channel: include metadata in file transfer offer
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7f3b4e7c145fad099b45ad5536b804498584a723
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 16:17:40 +0100
+
+    caps-helper: add extract_data_forms function
+    
+    Stolen right from gabble.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a6c40254424f16d54c6c69a8edd2168a8ff4a4cf
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 16:17:26 +0100
+
+    twisted tests: move caps_helper to root
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3264d551611950164ccbf76b8a7ec00ccb7a679e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 15:21:25 +0100
+
+    ft-manager: disallow Metadata items with key='FORM_TYPE'
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 530666920263084fea59b5291a3e155f2080e80b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 15:19:32 +0100
+
+    ft-channel: make Metadata props immutable and test them
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 911b27cab33f073bb33e1b4f3b11d670a441a3fa
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 15:12:25 +0100
+
+    ft-channel: get Metadata props from the file transfer offer
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ba724c8be698dc3828c05acdfeaca25c8c3078e6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 15:12:04 +0100
+
+    gibber-ft: parse data forms in query node of file transfer offer
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f93e211013c7f89c58365af275c4e8aa078786d5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:41:58 +0100
+
+    ft-manager: set Metadata props from channel request
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b9601186e65665a03c76ba930ae17566c829ca94
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:39:09 +0100
+
+    ft-channel: set Metadata props on construction
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5718a543a8c040cc9624f6947ecb45a6250d8e0e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 16:35:34 +0100
+
+    caps-file-transfer: bring back to the present
+    
+    Stop duplicating code and use pretty assertion functions and
+    misc. like that.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 816c32f7c72f9b808bf1b727f2f1906f68ba45e4
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:36:10 +0100
+
+    ft-manager: add Metadata props to Allowed_Properties
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9c8c3e7342dd417c50495d3c95fca576d3db558a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:32:07 +0100
+
+    ft-channel: implement Metadata properties
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5ece0fd90c64c8e26515d37c398c49475d9bd7de
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:20:14 +0100
+
+    extensions: add Chan.I.FileTransfer.Metadata draft interface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 50ff02ddcec6dafa6eb2d98eeeab8d3113ea4a39
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:14:22 +0100
+
+    configure: enable avahi twisted tests by default
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 90c913eb7879949d9f931bb1d2f4818f35bef749
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:04:32 +0100
+
+    saluttest: stop ensuring the known list; it's not available or used
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 63a8ec4e6da877a7189d31b42a0cb605f0f51f84
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-27 14:00:23 +0100
+
+    avahimock: signal AllForNow on ServiceBrowsers immediately
+    
+    The new ContactList stuff relies on avahi sending AllForNow now.
+    
+    In tests we don't actually need to do any discovery so we don't care
+    about this being so quick.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b849b67eb138764d2fddcd9aafaf22ec03e34fff
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-10-18 10:33:13 +0100
+
+    bump nano-version to 0.6.0.1
+
+commit b54f3a4d84316ec8559aff227ff106ccd8670f86
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-10-18 10:25:08 +0100
+
+    Version 0.6.0
+
+commit b3cce5dc40fc744d01b9844cfe0b91b6e42112f7
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-10-18 10:24:46 +0100
+
+    NEWS for 0.6.0
+
+commit 47acb3d179f8d4a36364daadae8b00bfadda2590
+Author: Xavier Claessens <xclaesse@gmail.com>
+Date:   2011-09-29 10:29:48 +0200
+
+    Use TpBaseContactList to implement the immutable roster
+
+commit 9341fc8f346787caa3be2c5e5e20a03102162924
+Author: Xavier Claessens <xclaesse@gmail.com>
+Date:   2011-09-29 09:22:58 +0200
+
+    Use GObjectClass::constructed instead of GObjectClass::constructor
+
+commit 81eec12622706003f46e9be9e92e96e1b164a5de
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-05 12:06:42 +0100
+
+    start on version 0.5.3
+    
+    Great things will happen.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0d025106a50a75904ae13b65e4c8f8220faa1104
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-10-05 11:39:52 +0100
+
+    version 0.5.2
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e7d04988d6cc2934a2e77b1a73e92bf29795177b
+Author: Derek Foreman <derek.foreman@collabora.co.uk>
+Date:   2011-05-16 14:35:41 -0400
+
+    remove duplicates from source file list
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 254284476b7f8d2a9f6c92963c9c752058288b03
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-09-15 16:05:35 +0100
+
+    with-session-bus: import echo fix from Gabble
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 166546dc5e4e920727f6e6146fe862d4cc935cac
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-09-07 15:06:17 +0100
+
+    util: fix send_ll_pep_event to get the node properly
+    
+    This is following a fix in Wocky to put the node name in the correct
+    attribute.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7188bde6e6e1c81617c89db6a1fd7be727653e4a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-09-07 15:06:07 +0100
+
+    update wocky snapshot
+    
+    Changes in this update:
+    
+     * Gnutls SSL backend fixes.
+     * Implement whitespace pings in the c2s porter.
+     * Fix the pubsub event node generator to put the node in the right
+       place.
+     * and a few more misc. fixes here and there.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b81086c2a76b2e5ca3ca421deebc51122fb26069
+Merge: e97a10a 79c310d
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-24 15:21:32 +0100
+
+    Merge branch 'contact-info'
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=40035
+    
+    Reviewed-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+    Branch-quality: impeccable
+
+commit 79c310dfcae1ee9de84448b0c0ee0dbc48431f5e
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 11:45:23 +0100
+
+    ContactInfo: note why supporting self is complicated
+
+commit 4296af242825c610a57224c082922299001e15e8
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 11:01:00 +0100
+
+    ContactInfo: ignore empty name, jid and email fields.
+    
+    When I tested this branch out for real, I found that a few people on the
+    network were publishing empty JIDs and email addresses, rather than
+    omitting them. This is probably also a bug in Salut. But we should cope
+    anyway.
+
+commit a5d63dcf86593359ddfa739a0f02d519255c991c
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 10:50:56 +0100
+
+    ContactInfo: test empty 1st, last and nick fields are ignored
+
+commit 55a1ee445c98ca0f1c9b1bc52b210eb983df077e
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 10:42:56 +0100
+
+    ContactInfo: expose fake FN field
+
+commit 7b616f381e4c1ef705b03195215b3b230b455b07
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 10:42:39 +0100
+
+    Contact: track shoddily-computed full name
+
+commit 41bb4ec0a5fdd056e47568729a3e8bdd589c59e0
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-16 10:40:38 +0100
+
+    ContactInfo: refactor out add_singleton_field
+    
+    Possibly squash into a7fe74f609f0f7a21716ef90dde7d67480a7df64 ?
+
+commit 3eb7f8fe5d80fb34b9b2ea29e729bf0b1b60479a
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 17:38:23 +0100
+
+    ContactInfo: test invalid and invisible handles
+
+commit d05399590a69be5b856498c7bb3e0638bf48e614
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 17:28:26 +0100
+
+    ContactInfo: implement RequestContactInfo
+
+commit 930e744331bb058d009f150b54a791a52dd1f7d2
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 17:07:46 +0100
+
+    ContactInfo: implement GetContactInfo
+
+commit 4c46b78a768409dc56561d1556ff9cab13a2b572
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 16:50:09 +0100
+
+    ContactInfo: expose email and JID
+    
+    I don't like the duplication in this function very much, but I don't
+    think splitting it up into another function would make it much/any
+    easier to read.
+
+commit 1fe8255709572fe97a338d848d419965a7dc1338
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 16:40:01 +0100
+
+    ContactInfo: implement change notification
+
+commit 246f3bc72ba494c640f3db1fd8dacd92fd24e42e
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 16:00:58 +0100
+
+    Debug: remove 'all' special-case
+    
+    This is done in GLib these days
+
+commit d7bfc06d26fdd0f29e0de5de339dbea40c9dc60d
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 15:57:26 +0100
+
+    ContactInfo: implement 'n' for contacts
+    
+    This is only implemented for GetContactAttributes, and there is no
+    change notification.
+
+commit e2077215e1be24c4f806a08670c7ef5231d6de94
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 15:14:03 +0100
+
+    ContactInfo: list plausible supported fields
+
+commit 71e40e50edc95b74e57bb43456da96adcb1d1720
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 14:24:24 +0100
+
+    Add a stub implementation of ContactInfo
+    
+    This is all the stuff that's completely trivial to implement.
+
+commit 92e70e7c0bce0e7e3938812042b2f0a31a9fb049
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-15 14:20:11 +0100
+
+    avahi/aliases.py: modernize a little
+
+commit a5601ee7c1de3683acbc6a0fe7e630e8d63ba4f7
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 16:49:55 +0200
+
+    Connection: include capabilities.h once
+
+commit c862984280c7096f4e1232b931846fbeb6157872
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 15:43:00 +0200
+
+    Connection: use TP_STRUCT_TYPE_ALIAS_PAIR
+
+commit 19bfc985571cfe4586b71cb7005863f8598b971b
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 15:39:27 +0200
+
+    Contact: track real names
+
+commit 9117c3da3f8341d48bfe790e5e5a9e00d52b1839
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 15:08:06 +0200
+
+    Contact: track email address
+
+commit 67fe59719ea3fa6777b1446a8773de6b2b241941
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 15:04:23 +0200
+
+    Contact: signal JID changes
+
+commit a073bd17c10cda7a32c19c64d322c6491618ead6
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 14:19:28 +0200
+
+    Track contacts' JIDs even without --enable-olpc
+
+commit 253e93508d78b524b5c94e7ecf5893aaacfc8b58
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 14:13:24 +0200
+
+    Contact: Replace #defines with an enum
+
+commit 6f490c06af966758f3601ce36c23e342f356c6b9
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-08-12 11:51:45 +0200
+
+    AvahiContact: use tp_str_empty
+
+commit e97a10ac5c84088967b3740c593372ccdbca4731
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-08 15:24:53 +0100
+
+    Update Wocky for corresponding --disable-debug fixes
+
+commit 9ec80fc9a1961faa9befcc2097b9c12260fa7594
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-08 15:24:18 +0100
+
+    Define a static inline no-op DEBUG() with --disable-debug
+
+commit ae5cc6b9b5684ed33420535483c313b1f295f076
+Merge: 19f06ba 942d12c
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-08-13 14:46:50 +0200
+
+    Merge branch 'test-cleanup'
+
+commit 942d12cf39fb8c134b795d4627d325a2ed5de44c
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-08-11 12:31:52 +0200
+
+    gibber: Ignore files built during tests.
+
+commit cb82f2205683fe2a532f3ed9d91be3c24c1f2b4a
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-08-11 12:23:23 +0200
+
+    gibber: Remove broken tests and dependency on xmldiff
+    
+    * These tests don't run successfully anyway.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=40001
+
+commit 19f06ba9e81b1356506746242772c710c23b3b74
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-07-25 14:46:15 +0100
+
+    tests: ensure OLPC tests are included in releases
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8075e04490d656b3da9bc651497338cfb7adc94b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-07-25 14:44:24 +0100
+
+    namespaces: add …/activity-properties constant
+    
+    This lets the thing build with --enable-olpc.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit bfcb1a34dcd0c7b2b2e43e4610c6ddebf26a747a
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 16:24:56 +0100
+
+    Update coding style and release mail scripts
+    
+    I grabbed the latter from an old branch by mistake when I added it.
+
+commit df52a7dc52147f70c2e180c09b58de052e3eed10
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 16:03:10 +0100
+
+    Bump the nyanoversion to 0.5.1.1
+
+commit 34473911a31f7b7620dfe86fc5ae1ccdf7e170ca
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 14:35:33 +0100
+
+    Version 0.5.1
+
+commit 97c6fb746bf64591e88d50006fbb1edc26c70a2a
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 14:35:14 +0100
+
+    News for 0.5.1
+
+commit a0490633f7652cc89d1e9c4b67ea89868f98e7b8
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 15:32:04 +0100
+
+    Propagate -Werror and coding style checks to Wocky
+    
+    Previously, -Werror was always enabled in lib/ext/wocky, even for
+    releases. So it just failed to distcheck for me, and would make
+    packagers hate us.
+
+commit 10287449e56eb7acb54572948b4ce9aaa0a0cd52
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 14:33:50 +0100
+
+    Add and use telepathy.am and make-release-mail.py
+    
+    This will let me use maintainer-make-release, and adds checks for things
+    like UNRELEASED.
+
+commit 2cb08f95c385adaf10b5a4a9cfe127cfbfdf1ddc
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-07-07 13:25:54 +0100
+
+    tests: look for 'contact-ids' in MembersChangedDetailed
+    
+    For at least a year, telepathy-glib used the wrong name for this field
+    in the details of a group changed: member-ids, rather than contact-ids
+    as defined in the spec and used by TelepathyQt4.
+    
+    Since Salut doesn't depend on tp-glib >= 0.14.6, let's look for both in
+    the test suite.
+    
+    Looked-over-my-shoulder-while-I-fixed-this: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ee7c997300d26960e5cb662542815763cf3a03ca
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-07-07 13:30:37 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d1e2397dc684b609ac5f9b78fd4d5b1e2b24c452
+Author: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Date:   2011-06-25 00:24:10 +0200
+
+    Cope with the default value of handle-type being changed in new tp-glib
+    
+    In recent versions of tp-glib the handle-type property defaults to
+    TP_UNKNOWN_HANDLE_TYPE instead of 0. Update the various assertions which
+    verify a channel doesn't get constructed with an unexpected handle type
+    to accept both 0 and TP_UNKNOWN_HANDLE_TYPE so we're compatible with
+    both versions.
+
+commit 58a742936ea0a71da0df61043236c65ba485be8d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-06-24 10:10:32 +0100
+
+    contact-channel: treat TP_UNKNOWN_HANDLE_TYPE has unset handle type
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 90d82631b78341a86c040b82dc3438478dc12cdd
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-09 14:06:52 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2782c58b5869babfcca9b699ff75360c4b7f57a4
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-09 09:31:45 +0100
+
+    gibber ibb bytestream: remove
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b1de837ebae853467aff11fb5096a934dfb865a5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-04 14:27:04 +0100
+
+    gibber-xmpp-error: remove
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 01a4df8810bf41ecbb8c44eb3ce10d0a360dd379
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-04 14:26:07 +0100
+
+    stop using GibberXmppError
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 484325b8891af7d0ba92d796fa8804481b9e846a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-04 09:11:59 +0100
+
+    gibber: remove gibber-namespaces.h
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 27e730bbd087abbc79452eb071fa51c5ed07c863
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-04 09:11:29 +0100
+
+    stop using gibber-namespaces.h
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3342b364c9678d063e9287a411f6b46336a9f988
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 17:14:21 +0100
+
+    gibber-xmpp-writer: removed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 026439608057f8c8ba8d1cc8bbcafb4acd172e58
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 17:13:38 +0100
+
+    muc-connection: use WockyXmppWriter
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 48cab0984fee58b5f85f352da29d5094858f27c6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 17:08:14 +0100
+
+    gibber-xmpp-reader: removed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 16d61ed42ff441cbcb37c595419537b0c77613ff
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 17:05:02 +0100
+
+    muc-connection: use WockyXmppReader
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8c395bffcc0dc5774fbaf8563dc6956058e5a581
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 16:38:43 +0100
+
+    configure.ac: set AC_LANG
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 948708e4a443e1af27eea7c5db45a0be88dec950
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 15:28:32 +0100
+
+    tube-dbus: fix typo
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 11b952142ff9b1c39642240581ab8c483e8588c8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 14:57:00 +0100
+
+    nano release
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6c47bda9644d4e2b3ccb785a5d1f713be4495f55
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 14:28:58 +0100
+
+    version 0.5.0
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit bc49af5ea64f124731837f402d00e12fb75b7c17
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 14:00:45 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9da53bf4cf7bc5da9752cc94789f07fea0e14b2a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 12:13:33 +0100
+
+    avahi-olpc-activity-manager: ignore browser-found callbacks if disconnected
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ebc29012b9e85fab2c5786ae87c3f9eb21e309dd
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 12:13:23 +0100
+
+    contact: fix typo
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4b134ed8009b9465c961db2f45fcf1f9a3b59d0d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 12:12:23 +0100
+
+    avahimock: use an actually unique index for new objects on the bus
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b636c3a48bbb1a47d67a812c6af5ffebf55c50ac
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-03 10:17:01 +0100
+
+    remove all set but unused variables
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c9bea14a3f70862173c32aba43d92d0e77835465
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-02 16:41:16 +0100
+
+    avahitest: catch a specific exception
+    
+    It can break the KeyboardException case.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4064258595701503a26f3b93eef01512263b3d68
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-02 16:24:15 +0100
+
+    avahimock: don't emit Found on ipv6 addresses if ipv6 is not available
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3fffd2d46ef898a8d5c0049d0fad5f82d56b7e87
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-05-02 16:22:55 +0100
+
+    avahitest: replace ipv6 one which doesn't touch avahi
+    
+    Our mock avahi will let an ipv6 service be resolved even if ipv6 is
+    not available. This isn't such a big deal, but let's stop using it for
+    an ipv6 check.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ee2533ead63db9d1f08347b7c82719a4921622e0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:52:19 +0100
+
+    file_transfer_helper: use a predicate to find the FT channel
+    
+    Picking up the first channel that pops up from NewChannels can be
+    wrong. There's something up with the tests on the buildbot but not
+    sure what -- this might fix something there though. The worst this can
+    do is change the test failure from an AssertionError to a
+    TimeoutError which is fine.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5a2318c2a4ea6fe3c532ab2ca5f96ebcf85c3965
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:29:47 +0100
+
+    twisted tests: get rid of annoying test- prefix
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 46c042e05f7b7fce80a640e4cda59404ca642139
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:07:32 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4c8fe6b52797328d579a4410b60f667592735919
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:06:51 +0100
+
+    tests: fix linking problems
+    
+    I don't really understand why this was breaking and why this patch
+    fixes it...
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 75c17ef51654a0d23255e04ff508c1bece6c4cd5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:06:32 +0100
+
+    twisted tests: include avahitest and avahimock in EXTRA_DIST
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4a87d73aa1941979c5d9843deba28ec383607f89
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 16:05:58 +0100
+
+    symbol-hacks: leave out wocky_debug
+    
+    It's not a function pointer with --disable-debug and we don't really
+    care about that file anyway.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 87d71aa0f844276f1d0e717c9081dee4f90ce0dd
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 14:06:39 +0100
+
+    capabilities: fix includes
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 243c0b73d7ed3db43d13e37828bd28cb10c16cd6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 14:05:57 +0100
+
+    src: remove annoying salut- prefix
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c1790e71e42d774923b7c8273ea617a22b69acdb
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 13:50:47 +0100
+
+    capabilities-set: rename to capability-set
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a4e984f3452880335ded6cad6c5c4fb0f6739c60
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 13:49:02 +0100
+
+    capabilities: rename to capabilites-set
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0cc6c406211450c7d97542b838023fa8e6f86f99
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 13:12:11 +0100
+
+    servicetest: update to newest version from gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3c489579a8efecb4fc35b0ac57b971632c1f9113
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 13:04:41 +0100
+
+    twisted tests: update caps_helper and ns from gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7066fd189689905a76a1f8ef2fd6f97b50f97826
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 12:49:34 +0100
+
+    saluttest: add elem* and related functions from gabbletest
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 60190192661bb53d24c002ffa4d2ff5bbf773e74
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 12:48:14 +0100
+
+    saluttest: remove the NOC signal handler when finished with
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d60e070a47af84e0ee7d427c5d814ce27327ea17
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 12:47:32 +0100
+
+    saluttest: use reactor.crash instead of .stop
+    
+    I'm not happy about this but this is what gabble does.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a3fb5a74a59ded97b36a952bfef56b65ac018593
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-28 12:45:30 +0100
+
+    NEWS: updated
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0fd17a82d334948bc133ae27b65e15d0b36e8fd7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-27 11:56:16 +0100
+
+    util: don't try and get caps out of something we can't read
+    
+    Most link-local contacts in the contact factory will be created by the
+    avahi contact manager in Salut, and so they will ultimately be
+    SalutAvahiContact objects, but not all of them.
+    
+    One example of one which isn't is the LL contact which wocky ensures
+    when creating the loopback porter in WockyMetaPorter, so let's not
+    cast that to a SalutContact blindly.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 87450c745491c7d671642cc473aa18b3560d2c2a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-26 16:45:25 +0100
+
+    connection: pass even empty clients through to channel managers
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2bf6e0678fbe891b1bf14f9c5c2d5872cfbb2cc8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 11:26:07 +0100
+
+    connection, presence-cache: add comments for the "data forms equal" functions
+    
+    They differ. This is why.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 34a662ecb815d9aec4578f333f7b0bff7e055ce7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 11:25:43 +0100
+
+    contact: no need to keep an old pointer array around when it's being replaced
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit dc1f9e468f5121c4a5bdadaa115b4ada270f6153
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 11:14:20 +0100
+
+    contact, presence-cache: set a free func on unused pointer arrays
+    
+    These will never have any elements in them by design, but it's not
+    clear so be more explicit and set a free func on the new pointer array
+    anyway.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7c05d71d522b09273c88753009d3ba2b7b5e200c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:43:00 +0100
+
+    presence-cache: learn self caps if they've been announced
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c24ccc5af95ae5bd2d7a7b4f63a179c924e1b34a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:42:39 +0100
+
+    connection: fix typo in update capabilities code
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b1587d322b5e3c71230335b138405c27f3a2495b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:42:17 +0100
+
+    caps-hash: calculate self hash using data forms too
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 90214e17469e3e059781ba1649085932fbd632e2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:41:24 +0100
+
+    connection: let clients represent themselves with data forms
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b7f4a89e383f5a35de82f0c34f2572cefe4855de
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:39:26 +0100
+
+    disco: reply from disco requests with data forms
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit db3d002508ed28bceb9621b33c48c0c609052dd8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:31:00 +0100
+
+    presence-cache: remember data forms
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ce0aa7668f5d258087baf3b46adb45a7d0c2938a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-25 10:29:00 +0100
+
+    contact, self: implement WockyXep0115Capabilities iface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 30bb4bda54e3a3da7e59e289f55c5c76bb0292b1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 12:24:51 +0100
+
+    caps-channel-manager: add data form argument to represent_client
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit fdb5c005d67481ff18b7f943b8959d1176087692
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 12:21:14 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 263a21c3d21d9a56d30b0c9d17be8cf683011571
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:41:29 +0100
+
+    util: include salut-contact.h in the normal place
+    
+    This was a temporary fix until I worked out the uuid problem, now
+    fixed a couple of commits ago.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 880ea0007c66d856853b5d6e34546781b8ea582d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:40:34 +0100
+
+    contact: remove config.h include from header
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d0e53bd470a2638835324575aa2a4bf0b67ad8e8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:39:45 +0100
+
+    src: include uuid directory and link to libuuid
+    
+    No idea how this worked before...
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b779af034320e2402bce4c011cda1b0b10157625
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:31:36 +0100
+
+    util: extract copying and sending a stanza from send_ll_pep_event() to another function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 916945dcf7cbfd98a7a13de65864136019cf7532
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-07 12:53:21 +0100
+
+    pep: make salut_send_ll_pep_event part of public API
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 431b8494eb86a456353fdf14c49d1695f7145980
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-11 11:06:02 +0000
+
+    util: add salut_send_ll_event function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 067627e64a19c64de4eb6549ff9a4ec11aef17ef
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:13:10 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 456667da199ede4d4000577d67b915e4e3437063
+Merge: 62ebf96 395324b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-22 09:12:49 +0100
+
+    Merge branch 'caps'
+    
+    Conflicts:
+    	configure.ac
+    	lib/ext/wocky
+    	src/salut-caps-hash.c
+    	src/salut-caps-hash.h
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 62ebf96742349fe72411ef8cb03ddb511e80cd94
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-18 10:50:52 +0100
+
+    src/Makefile: only build enumtypes files for salut files
+    
+    Like in gabble.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ae1b3ea0785850fd2e08b069a5d28ddaaa7ccad6
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-18 10:29:08 +0100
+
+    symbol-hacks: add some hacks to enable all wocky symbols be visible for plugins
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8d54b22a1df8aedb8ccbe87df07ba114d207a759
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-12 10:21:07 +0100
+
+    connection: add get_name() function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b034ef99f9afab5b2513cef6a7104f3f6ab3c8ef
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-12 09:50:02 +0100
+
+    connection: add get_session() function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 91b885466102af636f787fc524b386e2b2c16087
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-08 10:47:46 +0100
+
+    exec-with-log.sh.in: set G_SLICE=debug-blocks
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e1ae931b405822f9887c743cfeb1e0c7af5c8d34
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-08 10:39:36 +0100
+
+    exec-with-log.sh.in: just append to salut-testing.log
+    
+    Don't clobber it completely.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9388ac55d3d7bccb9d042c2a3ecba11d0c4bfa71
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-08 10:30:37 +0100
+
+    exec-with-log.sh.in: copy SALUT_TEST_BACKTRACE from gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c3032ebbd2079312d13be1fefb68376177a27934
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-07 11:18:48 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit eca1ade70e2a05e5f08ad21d6aafaba58a7aba65
+Merge: 194ca9b 6856d76
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-07 10:20:37 +0100
+
+    Merge branch 'mock-avahi'
+
+commit 6856d768ec168a2e25b55fb4eec62731befc0dc2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-07 10:20:20 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 80118b801297e3d645cf2495cf9e9017bf8b325a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 14:40:11 +0100
+
+    oob: hack around v6-in-v4 addresses being exposed
+    
+    This commit should be reverted when we depend on a GLib new enough to
+    fix bgo#646082.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 51fe8aa4bdd5730d5262389e00a3eeae2df03745
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 13:08:33 +0100
+
+    tests: only run the test suite on real avahi if SALUT_TEST_REAL_AVAHI=1
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b92a619720285dbd5720ff8257acf290f072f276
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 13:07:16 +0100
+
+    avahimock: don't bother resolving hostnames; it's only going to be localhsot
+    
+    This also means we can use anything we bloody want for the testsuite's
+    hostname.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 236cea2a171ef1402bc55f236f57b491068b4b34
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:59:36 +0100
+
+    avahimock: don't use magic numbers for AvahiServerState enum
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3909b2b81de06119e577a2d3caad43b047ac6f12
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:56:25 +0100
+
+    avahimock: hard-code GetHostName and GetHostNameFqdn return values
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7270ff8b1571ee6869799cfb82903286c41be4fb
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:56:11 +0100
+
+    avahimock: use a constant for the domain name
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c26f3aa03e438c5cbb2d01e33798b528f043c177
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:53:14 +0100
+
+    avahimock: use a little better error string
+    
+    Only a little.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit eb6bb90cdcc1fa1180431577794b856b36f3ae6e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:53:03 +0100
+
+    avahimock: return a hard-coded domain name
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 45775a33e8cb70168c610d6f96b462c5f2b4b6e2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:52:51 +0100
+
+    tests: remove Avahi service file
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4addd90afa20fd9dd7fbbedb6280d36907b7b529
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:45:52 +0100
+
+    saluttest: use the whole test path like in gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6e2eca6716c0d955df2dad02db83b42623cfbd7f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-06 10:45:22 +0100
+
+    contact-manager: don't look up a contact in a NULL hash table
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 194ca9bd5fc1ff70845937cd03f49bb74b91a1e1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 14:47:15 +0100
+
+    configure: re-word description of --enable-avahi-tests
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b8c26c0d6ac59c88fede90542e65e877fa6f68da
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 14:36:42 +0100
+
+    check-gibber-listener: fix test by not depending on what test was run before
+    
+    The main loop (and therefore the listener) was only started if the
+    signalled gboolean was FALSE. If this was the first test run then this
+    would be the case, but if the tcp-listen test was run beforehand then
+    it would be TRUE and so the main loop wouldn't run and the test would
+    fail.
+    
+    Seeing that the unix-listen test doesn't actually ever test the
+    signalled gboolean, let's just stop depending on it.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 89c9098ed080a9e3c83191ba6fb0d5a08e1b957b
+Merge: 758dba3 c41a25e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 13:57:09 +0100
+
+    Merge branch 'ohhai'
+
+commit c41a25ef7f8b9a221ba1e2b5e7f8d21c203c7e02
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 13:52:49 +0100
+
+    oob-file-transfer: use the correct enum when comparing members
+    
+    We got a GSocketFamily enum member from g_socket_address_get_family,
+    but then compared it to a SoupAddressFamily, although members of the
+    latter enum are exactly the same as the members of the former.
+    
+    gcc pointed this out as:
+    
+        gibber-oob-file-transfer.c:526:14: error: comparison between
+        ‘GSocketFamily’ and ‘enum <anonymous>’
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 94d9944e2d38a764d4edbce9cab57ccdece247fc
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 11:59:35 +0100
+
+    connection: don't crash if we try and get self caps before connecting
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 381972fb479a62e1ec994335b75bf7cf01b851be
+Merge: 758dba3 ff4a897
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 11:52:48 +0100
+
+    Merge remote branch 'smcv/mock-avahi'
+
+commit 758dba3714c8c586c21478e8759800acaeb9dc34
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 11:52:12 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b9c31893d6c4508efc3e49b07cd82f07ae8f242c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 11:21:54 +0100
+
+    connection: give the WockySession to create_sidecar_async
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 197b891390ee4dd5a1f5b46bc20629e665e94275
+Merge: 871abd7 f7687c7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 11:17:23 +0100
+
+    Merge remote branch 'smcv/im-on-a-train'
+
+commit 871abd7cb3f8d7c44f55542a4d757a34f7ca3a1f
+Merge: 165dfad cfdad47
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 09:50:44 +0100
+
+    Merge branch 'meta-porter'
+    
+    Conflicts:
+    	.gitignore
+    	src/salut-connection.c
+    	src/salut-disco.c
+    	src/salut-self.c
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit cfdad47a9ef766fbcee6d47476110cd92c6a2dc2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 09:47:04 +0100
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 95d10244be9f3f4c49fbf499714a9ee89f370d87
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 09:45:04 +0100
+
+    disco: use _extract_errors instead of extracting sub types manually
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1a9adddd5ba9d12b53ccca45822f744850838083
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 09:35:57 +0100
+
+    disco: fix indentation
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 06a7012fd69e2cc6884dd71d6b202e74822c1495
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-05 09:34:25 +0100
+
+    muc-manager: don't pass on bad clique invites to other channel managers
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e7c0c381f9316d60dfec3d15f0eaba5f0456d4ee
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 11:09:00 +0100
+
+    disco: always free request structs
+    
+    The problem is this:
+    
+     1. disco request is made
+     2. connection is disconnected
+     3. SalutDisco is disposed
+     4. SalutDisco dispose function g_cancellable_cancels each request
+     5. the porter (actually sending the IQ) realises it's been cancelled
+        and completes in an idle
+     6. the disco callback deletes the request, dereferencing its disco
+        pointer
+     7. but it's already been disposed, so assertion galore.
+    
+    There was previously an attempt to detect this but it was a bit
+    shonky. Now the disco pointer is cleared when SalutDisco is disposed,
+    then when the disco callback tries to delete the request it doesn't
+    try to access any SalutDisco structures. Bingo.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8248ff7760017918c7361c5fc07cd9532ad5c1cf
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 09:07:00 +0100
+
+    Revert "muc-manager: don't assert on no invite node"
+    
+    This reverts commit c836c6a9c3c70dd3259e316dc5e9eb1a3e78b821.
+
+commit 7b1a6014d3b982a8c15e3204d77f3f872d473ef9
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 09:04:36 +0100
+
+    tests: stop using re.sub when messing with argv[0]
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6fac150759b9c58cf44ffd29dfa9fec7f8e02e48
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 08:44:50 +0100
+
+    connection: fix "force_called" variable usage
+    
+    Previously it meant exactly the opposite.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3ea1ca10bb3524b6d15c8b689277ff558584701b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 08:41:35 +0100
+
+    connection: use g_clear_error as it's NULL-safe
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit bc8d85dd7ab42234559c798d5467fa35ab734d28
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-04 08:40:01 +0100
+
+    muc-manager: register a higher priority handler than the IM manager
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8ee26255a58818a4cf46238a178812445712565e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:51:04 +0100
+
+    file-transfer-channel: delete ft sockets when finalizing the channel
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 62e9935711e9914933bf95ad1e6ebb58c5cc605d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:39:06 +0100
+
+    muc-manager: don't try and index a NULL hash table
+    
+    This can happen if a browser-removed callback is called after the
+    manager has been asked to close all channels.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 201df796f0a887ceeed9d4c4a9dd937ce99a8f25
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:16:56 +0100
+
+    tests: fix tab/space problem
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 240e4b1274ad7ffbe16db384dd76f8b72da5b9a2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:16:17 +0100
+
+    twisted tests: make disabled messages conform
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit cbb040479b508ec7fb459d32da2bfe3543b8df6a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:15:02 +0100
+
+    file_transfer_helper.py: add test name to contact JID
+    
+    This is to work around avahi being slow at updating contacts and so
+    running tests with the same JIDs listening on different TCP ports for
+    incoming connections can break things as salut doesn't get updated.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 53c099075e201b8f85565f6d19c3c05cc9ab3e0b
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:14:21 +0100
+
+    file_transfer_helper.py: fix assertion message
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9ce433140e03c710fdbf7e5a305f56ba42d10b1a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:14:05 +0100
+
+    file-transfer tests: make HTTP server less verbose
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 74b4e5edf4e91be3c943d607e8ec3ec658d045ff
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:13:05 +0100
+
+    ipv6.py: stop using reactor.listenWith
+    
+    It's deprecated. This is a bit of a hack though.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f837a11220b51efa62e44384b3196988e7d34d2d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:12:39 +0100
+
+    tube-stream: set the WockyContact on a stanza to send
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 189021e7203015023c9887cd68950797761c395a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 15:12:20 +0100
+
+    si-bytestream-manager: set the :contact property on new bytestreams
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c630cdf3ff2a3f8c5621b6dc7616e8de352cb66a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 14:52:29 +0100
+
+    si-bytestream-manager: free a newly allocated stanza
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6f43b3aa51fe97d1d0c475d5394362e685b3bdee
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-04-01 14:51:45 +0100
+
+    si-bytestream-manager: fix s/get/set/ typo
+    
+    Introduced in 923da48ffc4735.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1f230673c5581384f89bf7ccedf091f9a39b0642
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 14:27:41 +0100
+
+    with-session-bus.sh: steal latest from gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 197e5ae81b2595a0a16f4cd4c19c549023095da1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 12:57:59 +0100
+
+    saluttest: set nickname to the test name for log prettiness
+    
+    cf. gabble.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0ceb8919443b0af641ff42b705192134a8781a46
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 10:58:00 +0100
+
+    xmppstream: set default namespace to jabber:client in stream open
+    
+    Woo!
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 7898353910dae2ab720fa9d7ec85e8c86a0a7d70
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:48:28 +0100
+
+    all: chain up to parent constructed if there is one
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3512aee218b2f157b0595ec82de0104602987eb8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:19:38 +0100
+
+    contact: listen to ::status-changed and remove connection pointer when disconnected
+    
+    The contact can outlive the connection and then can call methods ont
+    he connection which has already been disposed. An example of this is
+    when resolving a contact.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c836c6a9c3c70dd3259e316dc5e9eb1a3e78b821
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:07:15 +0100
+
+    muc-manager: don't assert on no invite node
+    
+    These callbacks are different now -- they can be called to see what
+    the callback so we shouldn't assert if it's not actually a MUC invite.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2afb63eb8aaeff4be8fa4bb8c812e0a95dc71f43
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:06:44 +0100
+
+    disco: only delete the request if it hasn't been already done for us
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d5b43d1beb459187ab918dcd0a02c7fbc5cd27e1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:06:24 +0100
+
+    disco: deal with the SalutSelf being NULL
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e16a55113fa64f01176be789f688467f2bb07c70
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:05:12 +0100
+
+    avahi-self: propogate error in announce
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a546c1822cb7d5cc8288ebba139611553c1ecea9
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:03:54 +0100
+
+    connection: keep a ref to the connection when calling close/force close
+    
+    Also, fix a case where tp_base_connection_finish_shutdown() is called
+    twice. D'oh!
+    
+    This will be fixed anyway when we remove force_close from the public
+    API.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3c833d1715c4210cc92e04f5ac569b2d76f78356
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:03:17 +0100
+
+    connection: add more debug messages when failing to connect
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 329a283e5818be2178ef3ec0f67c5decb7cdcf40
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:01:59 +0100
+
+    saluttest: update exec_test_deferred from gabbletest
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6d612aabb03cfb848fc3734423cd194dfd493278
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-31 09:00:30 +0100
+
+    servicetest: update colourer from gabble's servicetest
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 82f78a2d798ad284395fbb1dbb1416a78a53d6a2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-29 10:02:20 +0100
+
+    im-manager: ignore clique MUC invites and leave for the MUC manager
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e1bd15b54853fd7143247208d3664463a0587d0c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-29 10:01:44 +0100
+
+    disco: fix calling the callback if the cancellable was cancelled
+    
+    Oops!
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1247394a708123bcebf28aae91861a2e99314c70
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-24 11:40:36 +0000
+
+    avahi-contact: use stack-allocated GQueue instead of expensive or annoying GLists
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 42edf30b88986a29cbbc811efea10084efe2f2f7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-24 11:34:20 +0000
+
+    bytestream-oob: ensure we free the socket address in an error
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f12c6f1b6f07544f614bb1815aaf78d5a6f0c610
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-24 11:23:37 +0000
+
+    bytestream-oob: use the actual socket address when connecting to remote contact
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1098480d797fb261eef5e8b9ce6c206acb63fd73
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-24 11:05:59 +0000
+
+    bytestream-[io]bb: fix so more than the first object can work
+    
+    Also, clean up by removing the if (blah blah blah) in the set_property
+    implementation.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e3a81ac84abf6cedaea3aac4d638461e296346fd
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-24 10:45:13 +0000
+
+    tube-stream: don't unref a NULL stanza
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 165dfad6d746110a90693cc366fc58556bdff42e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 10:25:19 +0000
+
+    gitmodules: update wocky's URL
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c492cf03519d25a69ef7291bba69c963478922ec
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 10:23:23 +0000
+
+    gibber-file-transfer: porter property cannot be NULL
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a6e01c196e3dd611635fdeddc69616a913dca2fc
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 10:16:51 +0000
+
+    im-channel: clarify comment regarding stanza handler callback returning FALSE
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 1a06f891b2ee5767a28c9539c200dc8eab70947e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 10:15:42 +0000
+
+    disco: don't call the callback if the object has been disposed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b900269fe36cd5852a62cfa1910dff51d55a05fe
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 09:28:23 +0000
+
+    avahi-contact: use prepend then reverse, instead of append
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c95d4e863585a94c8d454cd60ace9b2b800b18a5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 09:19:52 +0000
+
+    avahi-contact: remove confusing comment
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9e28b4fadafad3a8a4900a64329712e41876a48c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-23 09:19:01 +0000
+
+    avahi-contact: don't get the AvahiIfIndex if it's not required
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b76e690de7a13bcb91d9d02dc2685aa3dfade235
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-22 13:53:54 +0000
+
+    connection: don't critical when calling UpdateCapabilities pre-connection
+    
+    I assumed gabble_capability_set_equals would take a NULL argument
+    fine, but alas it does not.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit bd725740a004bd38e55331494a7673f2766032ab
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-21 15:55:18 +0000
+
+    plugin-loader: don't critical if a plugin lazily implements no sidecars
+    
+    An empty strv is really { NULL }, but it's not so unreasonable to
+    use just NULL instead, so we shouldn't break if we get that.
+    
+    Creating a sidecar is safe as it checks whether the strv contains the
+    requested interface using tp_strv_contains() which treats NULL as an
+    empty strv.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 54bb941c5faa92ce49f61e1af925c72345026537
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-21 14:57:14 +0000
+
+    connection: save pre-connect UpdateCapabilities and set when creating the SalutSelf
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 801723046b8ba801711273ba44929c79097c463f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-21 14:33:19 +0000
+
+    Revert "connection: create SalutSelf earlier"
+    
+    This reverts commit 137833bf895865765abd0e719f5ca52a510bd253.
+
+commit 02dfe0e60dafbda103c760dc8476a42d81ffeb20
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-21 13:51:32 +0000
+
+    tests: stop referring to libsalut-backend-avahi
+    
+    This was removed in 3f2f6de25ce5a5d7d5.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c83e98eccd192a7ef9f77cb317b6f0ec70d2bdb1
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-03-18 18:45:11 +0000
+
+    configure: check for Python Avahi module
+    
+    Previously we'd try to run the tests even if the Avahi Python module
+    wasn't available.
+
+commit f915df4a1f24eb032d16198c19770c47bcb7a40c
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-03-18 18:44:46 +0000
+
+    Correctly use im-local-xmpp as the icon name.
+    
+    6db2272 broke this.
+
+commit d4a982ee82f105fa5e11d8ed3086482561af431c
+Author: Will Thompson <will.thompson@collabora.co.uk>
+Date:   2011-03-18 18:41:25 +0000
+
+    Unconfuse TpTubeChannelState and TpTubeState a bit
+    
+    My version of GCC didn't like building a bunch of the tube code because
+    it confuses TpTubeChannelState and TpTubeState. In practice this code
+    works because the former is a superset of the latter and none of the
+    confused code paths can encounter the extra value. This patch tidies up
+    just enough for the compiler not to whine.
+
+commit cde06ccf071f793a81e0f71627719d7753d9430d
+Merge: 3c112f5 14e2d72
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-21 08:58:09 +0000
+
+    Merge branch 'sidetzars'
+    
+    Conflicts:
+    	extensions/all.xml
+    	salut/Makefile.am
+    	src/salut-connection.c
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3c112f53e732306b95f1c01050972ac5fd6ecae2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-18 13:20:12 +0000
+
+    connection: only print "updated caps" if they've changed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 91211a7c2b02c0773e77d33a95850be9a6e1b9cc
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-18 13:19:48 +0000
+
+    capabilities: move to public API
+    
+    This lets plugins build again. :-)
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 06cee2b75b0ea04dc9b4b7a0af01847af05ae6d7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-18 12:50:39 +0000
+
+    salut: remove duplicate pkg-config file
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 42f10a68a6075ad711c46ca375b85429cc5a0a4c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-18 09:32:44 +0000
+
+    salut: make caps-channel-manager and capabilities-set public salut API
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 73a0c0372789fe13154fddb89eef2a9a010bdd4c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-18 08:50:14 +0000
+
+    connection: only try and announce self caps if they've changed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 84e53c868e09a632e6cbd2e7299d8c3da12e1630
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 14:40:18 +0000
+
+    extensions: remove ContactCapabilities draft
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3eb861687d891bf851951e19d9c08836d48c9148
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 14:40:05 +0000
+
+    connection: port to undrafted ContactCapabilities
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 137833bf895865765abd0e719f5ca52a510bd253
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 14:36:36 +0000
+
+    connection: create SalutSelf earlier
+    
+    This is so we can reference it before we connect for, say,
+    UpdateCapabilities.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0018ac8a41cb3b59bac226446ac233337bb04306
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 12:58:43 +0000
+
+    disco: use WockyNode instead of GibberXmppNode
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 79e42ba994fad7271e9e5e9eca6c45f643e9cdfd
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 12:58:21 +0000
+
+    presence-cache: fix leak and used uninitialized warning
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 318dfd3cdcc3549e3fca8d0ddba7e00fca3d3e2f
+Merge: 1400816 0eba2ff
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 12:51:40 +0000
+
+    Merge branch contact-caps
+    
+    Conflicts:
+    	src/salut-caps-channel-manager.c
+    	src/salut-caps-channel-manager.h
+    	src/salut-disco.c
+    	src/salut-ft-manager.c
+    	src/salut-presence-cache.c
+    	src/salut-tubes-manager.c
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 140081643caa1eda5763e52d616616408994b366
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-17 12:45:51 +0000
+
+    {ft,tubes} managers: don't use G_GNUC_UNUSED on used arguments
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 14e2d72bbeae565a53fe8bd32f375c0cec3715c0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-16 14:28:47 +0000
+
+    sidecar: update copyright years
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f89e2b1d8bb03138c11437148ef3c85a95aa4b2f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-16 10:56:09 +0000
+
+    gibber: update to meta porter API changes
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 67c4ee0d757d0165b9bc6f38202fe6bfee389b85
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 15:19:59 +0000
+
+    sidecars test: added
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e7fe1cceac51e7e4e9f72f74523962af4905c974
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 15:19:36 +0000
+
+    connection: implement FUTURE interface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 459624a34cb65c30ede5887166d038d900b2216e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 14:39:22 +0000
+
+    test plugin: add simple sidecar support
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 04c5ef4799db15e400bb407396c161e930ab2389
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 14:39:03 +0000
+
+    plugins: add sidecar support to plugins
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5262d495ae17c65b654d22bcb9f1699d4d866143
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 14:11:34 +0000
+
+    salut: define SalutConnection so it can be referred to in plugins
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0eba2ffb56ed5f612e6d2a9657fe38522a3bd2b1
+Merge: c98fa2f 627a15e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-15 13:44:34 +0000
+
+    Merge branch 'plugin'
+    
+    Conflicts:
+    	.gitignore
+    	configure.ac
+    	tests/Makefile.am
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e623f4b62512508af7f9bd30965e1d8e17a6f74c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-14 12:02:32 +0000
+
+    all: use hold/unhold instead of ref/unref
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 68771fd034b1b2df3d286352479d687c32c199e0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-14 09:44:36 +0000
+
+    all: use specific to/from when referring to contacts in stanzas now
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c98fa2f0585d1752db4c37af6ea9abcb13c31ff3
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-03-12 10:14:13 +0100
+
+    Distribute *.pc.in files, and different text for uninstalled version.
+
+commit 84fab29e9bba4dc5b8f4e19e94a81dd4f262c49d
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-03-11 15:36:57 +0100
+
+    Add a telepathy-salut.pc file which contains the executable path.
+    
+    For use in tests.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=35211
+
+commit 627a15ea32138a4406dc2bd8c29e879b1a8f14e9
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 16:51:12 +0000
+
+    plugin: clarify the ownership of the returned array
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d63fd99f448a10cf34b881c478861b603ffd2c6d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 16:46:54 +0000
+
+    connection: fix typo when freeing the actual pointer array
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4fd95fb998e8bd4143504d8c99a564a34246cd49
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 16:43:39 +0000
+
+    avahi-{contact,self}: fix typo in making contact/self jid
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9190abbe5e9041444424a49b6a6d6c45b453170f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 16:39:34 +0000
+
+    plugin: use G_DEFINE_INTERFACE
+    
+    We need GLib 2.24 for this.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit edcba4c589ff2b6954d46de3bdeda4ff91455eb5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 16:31:15 +0000
+
+    connection: wocky_session_new now has a _ll suffix
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a6bf9ee54e934988f59a3d3296e3cc476b1bb703
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:40:40 +0000
+
+    ft-manager: only get the contact with an actual ft offer
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e35953ceb721c30e7808edccf8a00ca9a185adc7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:37:42 +0000
+
+    gibber-xmpp-connection: removed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 51bd65fd96c762fea7990507db13b144cee50abc
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-03-02 16:34:55 +0100
+
+    add Messages properties to immutable properties
+
+commit e4bd1f21c86cbd949f70a911f6dc8dfd795e1baa
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:34:16 +0000
+
+    gibber-iq-helper: removed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit dbd43829b8370a7fb2b5120594b3e30752452a55
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:32:16 +0000
+
+    si-bytestream-manager: remove stray include of Gibber iq helper
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f8bc814ca4f1343080f5e5b384143cc63ee81f08
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:30:06 +0000
+
+    gibber-xmpp-connection-listener: removed
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 423253450d567702bd427448f52bb14992c4321e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:20:55 +0000
+
+    xcm: remove files
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 75c4a6d047cb5833afb410fcb7fc38b00d2e4804
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:20:37 +0000
+
+    connection: stop creating an XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit bc601fcaf79be77d8b87e33c3685f68204aa44b3
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:18:02 +0000
+
+    presence-cache: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 437ecdf19f385a28d3a9ac4a92a3dfaa732b2695
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 15:17:20 +0000
+
+    bytestream-oob: stop using GibberXmppConnections
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e56b5d3319ce696568fd813361b7ec742c8704ee
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 14:00:48 +0000
+
+    bytestream-ibb: stop using GibberXmppConnections
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 923da48ffc4735a139c950bcd2f1e911cc68f15d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 14:00:09 +0000
+
+    si-bytestream-manager: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0e37db997eecb5b8646a2f362da2fa53ec0c78a2
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:59:43 +0000
+
+    tubes-channel: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 898b111ab4a296052fcc333b911d3626af990916
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:56:06 +0000
+
+    tubes-manager: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit f6fa1694a73010ac0134a648cfcfea93cb9ccd76
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:54:14 +0000
+
+    muc-manager: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2857f6212a3e2e9136469f224f77b3e21472ac72
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:50:05 +0000
+
+    connection: stop using the XCM for OLPC uninvite stanzas
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5dfe4eafe41678ea7291825f3fe8128a59a651a7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:48:49 +0000
+
+    olpc-activity: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit aff3ae0fa99b1ecd7078505e1d8503e997ce0bd8
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:48:04 +0000
+
+    roomlist-manager: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 900449dfacf9518f3fcc52972f8ef0a4850f75af
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:47:28 +0000
+
+    file transfers: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5b1e6d98e994e33d234db050fba28c533d41ac65
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:45:45 +0000
+
+    presence-cache: handle errors when discoing contacts
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b2c345adeb8f9df81b5eecd0d00583e8b90deefb
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:45:09 +0000
+
+    im-channel: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 31e26a89bc3d052ef2d29a2afdb5bd297c8e15d5
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:44:05 +0000
+
+    im-manager: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 408b0ccb7919cdaef808357c9d65355c261f5f4e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:42:23 +0000
+
+    disco: stop using the XCM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 60fe494dd65dac6a46aa19fded9b2b9bef9f9822
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:35:53 +0000
+
+    avahi-contact-manager: add contacts to Wocky's contact factory too when created
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e4c52c08713c044949fd825986d832b4687c24c7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:34:41 +0000
+
+    avahi-contact: make a subclass of WockyLLContact
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5cf592b7034bebfc0be623bc662b43897fd71b09
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 13:28:17 +0000
+
+    connection: close all porters when disconnecting
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 97a6813723e5fa96109c82f3aa31e296ec8cfc2a
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 12:16:58 +0000
+
+    connection: create a WockySession
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit b79d0489bc6ef6b912af020d4014170a79827bb1
+Merge: 7e4e2b4 8843f79
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-03-02 08:04:06 +0000
+
+    Merge remote branch 'stef/test-using-gtest'
+
+commit 7e4e2b44d35cc8e7321e4f62cc8dbb84a4f43f1e
+Author: Danielle Madeley <danielle.madeley@collabora.co.uk>
+Date:   2011-03-02 09:52:26 +1100
+
+    message-sent and message-received are int64, not uint64 or uint32
+
+commit 8843f79f35f40e517154d0b231681c220ddebce0
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-02-16 16:50:27 +0100
+
+    Migrate from 'check' to glib tests.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=34341
+
+commit 1b1060dc25d6a027b02a2c3a928fef0bff239dbc
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-02-13 16:08:51 +0100
+
+    Cleanup comments that no longer match source.
+
+commit aec9acb11cc830b199571cc675577a40669cc3cf
+Author: Stef Walter <stefw@collabora.co.uk>
+Date:   2011-02-13 16:00:57 +0100
+
+    Remove unused member variable.
+    
+    SalutImManagerPrivate::pending_connections
+
+commit 8ff71251a3e5dd85645b85fe16e161eb126bfe1e
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-09 12:41:43 +0000
+
+    gibber: remove node and stanza tests
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e36cc7e902fec88a1fb979e10cf1f2b86611464d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-09 12:37:59 +0000
+
+    gibber: remove GibberXmppNode wrapper
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c06e646052ad30573ee2404b841eda6352e036e7
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-09 12:37:46 +0000
+
+    gibber: remove GibberXmppStanza wrapper
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit ebdffdf082dc15538815517970c5af10184b1115
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-08 14:42:20 +0000
+
+    salut: include wocky as part of the salut plugin API
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit d09a602e12e25484dce07a22973fbbc111b7ae3d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-08 11:14:53 +0000
+
+    plugin: fix up pkg-config files
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 95ed3ebfffdbbe6da7db659c06cb9aeb11d252db
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-08 10:26:31 +0000
+
+    salut: move protocol.h to salut's public API
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit baf67f53e38d8ac0d4e7355f832d4065bd9c6553
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-08 10:17:19 +0000
+
+    protocol: specify the DNSSD name and have a backend fallback
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 3f2f6de25ce5a5d7d5d335682548c1a95b72feb1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-08 09:51:26 +0000
+
+    src/: remove backend static libraries
+    
+    Just throw it all into the convenience library.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 8d8cbbdd95e420c34916da95bd2ce2b34e4f57b4
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 16:48:53 +0000
+
+    avahi-{contact-manager,self,contact}: don't assume dnssd name is _presence._tcp
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 96da3972933b51037593c92a395a96e26f2c0f4f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 16:48:03 +0000
+
+    avahi-discovery-client: add a get_dnssd_name function
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6db2272c47e4ba7cadf623940e2877d820359cf1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 16:15:41 +0000
+
+    protocol: allow the name, icon name and English to be set easier
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 0a4e239e80474e990475c987546adc80c4af6008
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 14:06:08 +0000
+
+    test plugin: document how to add another protocol
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit e343336ffb798eccfae8b3e5f0fdb5ab6b294e6d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 13:48:42 +0000
+
+    plugin: add initialize method to give access to the CM
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5700f08ca7b05df559a0829c04d7874e3c4d86b9
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 13:28:30 +0000
+
+    plugin: add padding and API version
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 16b379a0df1128cdc22c64fc06b2fb55001129d1
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 12:40:18 +0000
+
+    plugin: clarify the return type of CreateChannelManagersImpl
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit c241268980bcbdc00e768343eb56d7ae27162020
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 12:37:32 +0000
+
+    test plugin: implement create_channel_managers
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 9acaad58f52a2d337126968aa173b35a4fb14c2d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 12:37:11 +0000
+
+    connection: add channel managers from plugins
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 091287566f168fd2a26900d4d8980973b889f144
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 12:36:45 +0000
+
+    plugin-loader: add create_channel_managers method to iterate the plugins
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 60f4cffc76886b2cc16a5672ef540e6aa346058d
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 12:35:16 +0000
+
+    plugin: add a create_channel_managers plugin member
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit be34bffd864816dbd82a8097a955eec3ed4131fa
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 11:57:31 +0000
+
+    plugin-loader: add plugin loader from gabble
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 6195e787e6fb2c92cebe85ebd815210f0952a2f0
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 11:49:59 +0000
+
+    plugins: add a test plugin
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit aacd617f299de8836b41383634c452060f0dcf4f
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 11:44:15 +0000
+
+    plugins: start defining SalutPlugin interface
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit fc8261c9098be490635c7f6eea3fa47d0a134263
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 11:37:46 +0000
+
+    configure: add --enable-plugins option and link to gmodule
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit af380d713a0fe6a74b84e30d0ebd576ed2904f2c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-07 11:34:08 +0000
+
+    debug: add plugin debug categories
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 395324b1dab0e8b03b0ae44704a1347fefb3776b
+Author: Jonny Lamb <jonny@debian.org>
+Date:   2011-02-04 14:43:55 +0000
+
+    caps-hash: use wocky_caps_hash_compute_from_lists
+    
+    Signed-off-by: Jonny Lamb <jonny@debian.org>
+
+commit 56d7666e1bf58b3bed1301e039338765f181239a
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-03 09:58:55 +0100
+
+    add mising space
+
+commit 7be0c14026bc0d6c2b48cf63ef8078ada04b3fb4
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-03 09:58:26 +0100
+
+    file_transfer_channel_allowed_properties: update comment regarding properties ordering
+
+commit e5e96f1eb0f55daf657d696b7871e70ee22e9f4c
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-02 16:30:48 +0000
+
+    caps-hash: remove caps hashing code
+    
+    This has moved to Wocky.
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 2ae55c56418a3eca478503b345a11505280b4341
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-02 16:30:26 +0000
+
+    presence-cache: use wocky's caps hashing code
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 5232222c686297476efa5d0480b59380cdbb23d4
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-02 16:29:59 +0000
+
+    configure: test for python-avahi
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 015fd9530cbbe4b010e8314dc2e7bfa7eb55c985
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-02 16:12:24 +0000
+
+    configure: check for xmldiff
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit 4b6c7eae9d1f338ce9f7bc5a08b47175f23937be
+Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+Date:   2011-02-02 15:50:13 +0000
+
+    update wocky snapshot
+    
+    Signed-off-by: Jonny Lamb <jonny.lamb@collabora.co.uk>
+
+commit a05c46e046b564c4a9f1a5a5f438ede6e33f0029
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 16:45:31 +0100
+
+    test URI property
+
+commit 1cb100517f2e430ef31b310acbbd7cf35463021e
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 16:31:36 +0100
+
+    Implement FileTransfer.FileURI (fdo #33833)
+
+commit 4a2f0b9d5c36dd085a93d3e8a0fc3d87e7829f69
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 15:21:20 +0100
+
+    file transfer tests: use constants.py
+
+commit 317ad67e47170acf2cdc3fe0c6ab045b3093f628
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 14:29:28 +0100
+
+    constants.py: sync with Gabble
+    
+    Remaining change: ContactCapabilities is still a DRAFT in Salut.
+
+commit 8783513aa2c5fde5d408054d10d8c89f48e7ea92
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 13:16:22 +0100
+
+    file_transfer_channel_allowed_properties: use tp-glib constants
+    
+    Also re-order it to match Gabble's ordering.
+
+commit 7dffc1e2c000a36d8cae2f69b43e8144e89d6b26
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 13:10:52 +0100
+
+    Depends on telepathy-glib 0.13.12
+    
+    We need it to implement FileTransfer.URI.
+
+commit e8e06a9d1c688d7b56ccc1f8267ece7cb9a96d62
+Author: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date:   2011-02-02 13:25:19 +0100
+
+    saluttest: silence the queue if we hit an error
+    
+    This a backport of the Gabble commit ee177cfb2a13a8374e2f1037e806b7bc58aa708b
+
+commit f7687c7da88feccd4a225d17397ee83118018052
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-12-03 15:59:35 +0000
+
+    test-close-local-pending-room.py: be more specific in our expectations
+    
+    When not on a LAN, the events don't come out in the order we'd assumed.
+
+commit a15d92f646d661207f947c65554bc2421a42fe57
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-12-03 15:58:34 +0000
+
+    test-close-local-pending-room.py: use constants.py
+
+commit 5527c3226d98a1afd3b0df3c63b36712d9149f09
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-12-03 12:30:29 +0000
+
+    test-muc-invite.py: avoid implicit assertion that no non-Text channels appear
+    
+    This failed at least once for me while on an offline laptop.
+
+commit 8a26a635ad7249d650afede4201030e34c567cc5
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-12-03 12:29:55 +0000
+
+    test-muc-invite.py: make better use of constants.py
+
+commit ff4a8979d408daaebd19ff041b2d908aa3a3bc76
+Merge: ee83ae0 cbe5cc6
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-12-03 12:18:21 +0000
+
+    Merge branch 'master' into mock-avahi
+
+commit cbe5cc6fdeb62706f03bf212f2fd747dae8bde15
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-17 17:48:01 +0000
+
+    fd.o #31665: use TpDBusDaemon, not tp_get_bus()
+    
+    Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+
+commit ee83ae0811a5753316766ded2d85f8758f83ba43
+Merge: 2cb3acc 279099c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-11-05 14:03:04 +0100
+
+    Merge branch 'mock-avahi-3' into mock-avahi-4
+
+commit d68cc47ccbc09a02f997eb2e09d8e6977099cdeb
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:45:53 +0100
+
+    Remove SalutCapsChannelManager
+
+commit 4f5e6848885df1e4418a6ea525533399d2cf52bc
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 12:23:03 +0000
+
+    SalutPresenceCache: don't store per_channel_manager_caps
+
+commit a66e59e57fb9d5a0db5e7a783d918552c9b853f7
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:40:34 +0100
+
+    SalutContact: don't store per_channel_manager_caps
+
+commit ff8a9257edd2347d65c49c7a1e70b1fa685f535d
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:39:13 +0100
+
+    SalutPresenceCache: don't emit the actual capabilities in capabilities-update
+
+commit 2d79e55cae1bc970738bbea23f7f29bb609c2841
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:35:06 +0100
+
+    Remove now-unused functionality from SalutCapsChannelManager
+
+commit 5ab4bfc3d804e3d7f13c02f74204c33c5fcab02b
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:14:15 +0100
+
+    SalutSelf: work entirely in terms of a GabbleCapabilitySet, with no "per-channel-manager caps"
+    
+    In the process, convert salut_connection_set_self_capabilities to use
+    gabble_caps_channel_manager_represent_client.
+
+commit 85c6d6055dac41fb9426c7fd80c921996d1d3e0c
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:59:33 +0100
+
+    salut_self_swap_per_channel_manager_caps: stop returning the old caps
+    
+    They're no longer needed.
+
+commit 185f79efa3815df1f0d808a329ea8092ed773f15
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:57:19 +0100
+
+    _emit_contact_capabilities_changed: no longer needs the old/new caps
+
+commit 6780d912b70569152df058fb3087d1d12e7f468e
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:56:09 +0100
+
+    _emit_contact_capabilities_changed: always emit the signal
+    
+    Both of its callers now check for a difference.
+
+commit 94cb205fc725d6522f6c8072565140f0e3206c65
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:55:09 +0100
+
+    salut_connection_set_self_capabilities: only call _emit_contact_capabilities_changed if caps have changed
+
+commit 107e5f62fe1e1d3e459ecc6f0d459a68c6886b44
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:51:51 +0100
+
+    connection_capabilities_update_cb: always call _emit_contact_capabilities_changed
+
+commit af3395399d83d916035e2df1209f7fe959352568
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:51:15 +0100
+
+    salut_presence_cache_change_caps: do nothing if contact's caps are unchanged
+
+commit be3658ad0df3a4a81d66e255cecd559dcaa69ec3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 14:47:36 +0100
+
+    SalutCapsChannelManagerGetContactCapsFunc: remove, unused
+
+commit 9e348a4b7be07c544bcae015e08b1f0c157e5959
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 13:19:42 +0100
+
+    SalutConnection: use GabbleCapsChannelManager to read contacts' caps
+
+commit 568c4516d414d3027ad1d707235a4e009a9beb42
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 13:17:50 +0100
+
+    Implement a trivial GabbleCapsChannelManager on channel managers that have no caps
+
+commit 96b3489f713a0c2cdb31f304aad8e0ca9a82ba95
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 13:10:15 +0100
+
+    SalutImManager: implement new-style get_contact_caps
+
+commit 739c94ced26cabe12bb5bc87760983c4e24d845e
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:59:46 +0100
+
+    SalutSelf: limit per_channel_manager_caps editing to a "swap" operation
+
+commit 824aa6b7b2143632186997facff1e6c545d2e9dd
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:53:41 +0100
+
+    Change signature of salut_caps_channel_manager_add_capability
+    
+    - it implicitly acts on the self-handle (nothing else makes sense)
+    - it takes the per_channel_manager_caps to modify as an argument
+      instead of editing the SalutSelf directly
+
+commit bc579b149883f032c124aece99e8098db69ffdb9
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:39:04 +0100
+
+    Add simple accessors for SalutSelf's per_channel_manager_caps
+
+commit 2e526e88acb15a9a2c45d523ee772ab1b582e154
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:17:15 +0100
+
+    salut_self_get_features: make static
+
+commit 492ff26eeea595bbf9bfcf36bee76ba87be59a6a
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:06:27 +0100
+
+    Use salut_self_get_caps instead of salut_self_get_features
+
+commit 83e66a0af3117bc559b31eab52d8e4d62b2ee292
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 12:06:08 +0100
+
+    SalutSelf: add an accessor for a capabilities set
+
+commit a13c8e58094b9524ada5c54edb7ca8c9c6a99518
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 19:08:22 +0100
+
+    FT, Tubes channel managers: implement GabbleCapsChannelManager
+
+commit dbae0daf521292779949dd1a20650be09295f9c6
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 18:58:14 +0100
+
+    Add a quirk (pseudo-capability) to anyone without XEP-0115 caps
+
+commit 3412b586ac693e2d1b73ec276cd36b1e5d25bc28
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 18:53:53 +0100
+
+    SalutContact: have guaranteed non-NULL new-style capabilities
+
+commit ec01a9a74666325d6cd3601aabb132b302bb3206
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 18:38:04 +0100
+
+    SalutPresenceCache: remember a CapabilityInfo struct for those without caps
+
+commit 14136a6e2d57fd0a6b7d0581f308405f978a49ab
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 12:22:20 +0000
+
+    Give capability_info_get the semantics you'd expect
+    
+    In particular, this means the struct's members never need to be NULL.
+
+commit 124e8bfca5dda0a74b55b36eb98656f3d1ebba88
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 17:54:24 +0100
+
+    salut_presence_cache_change_caps: factor out
+
+commit 764398884d19debfbefd380e4bf7aa477c867b5b
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 12:21:28 +0000
+
+    SalutPresenceCache: store a GabbleCapabilitySet too
+
+commit 6d9edc433b2ee0d94eacd638a073a410242a44eb
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 13:23:46 +0100
+
+    SalutPresenceCache: imply caps_set by (per_channel_manager_caps != NULL)
+
+commit ac7f670911cabd895f5af1240b2e3784d299b057
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 13:20:07 +0100
+
+    SalutPresenceCache: don't create per_channel_manager_caps until needed
+    
+    This also fixes a theoretical leak if we get a redundant disco response
+    when caps_set is already TRUE.
+
+commit 21b30751bcf16356363db168ec33a1582822b198
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 13:09:37 +0100
+
+    SalutPresenceCache: inline capability_info_recvd into its one caller
+
+commit 4e7982bf4aed630addfd31d4d123d41e9da0620f
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 13:37:41 +0100
+
+    SalutTubesManager: add_service_to_array: remove unused argument
+
+commit ef65ffffd9b883dc5eae9fd0aac4cba5542a1ef5
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-06 12:57:33 +0100
+
+    SalutFTManager: add_file_transfer_channel_class: remove unused argument
+
+commit c26759d1cda55c8212c9f3c4700f62c646fdd837
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 13:16:32 +0000
+
+    Import GabbleCapsChannelManager and related classes
+    
+    From Gabble, with minimal modifications:
+    
+    - put gabble/namespaces.h in gabble_namespaces.h
+    - include capabilities-set.h instead of gabble/capabilities-set.h
+    - use DEBUG_PRESENCE instead of GABBLE_DEBUG_PRESENCE
+
+commit 2cb3acc20fcf252517a6b94f66f37f09756ba2b9
+Merge: 93e1ace 401d722
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-05 12:28:03 +0000
+
+    Merge branch 'reliability'
+    
+    Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+
+commit 279099cd64e7f337ce13f73bbb1f14b975a9c8ee
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-11-04 14:32:43 +0100
+
+    Only emit ServiceResolver.Found signals that match the protocol
+
+commit 0e0532968984ef1e49a61d463364202aeb9dc4a1
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-11-04 12:57:44 +0100
+
+    Get the event for the expected protocol
+
+commit 401d722e8adcc275e8c77416e57a2fcfc302bc8f
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 18:34:54 +0000
+
+    Use wait_for_contact_in_publish more
+
+commit c4537936793e9980f3c79b52851150ad5a365fd7
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 17:42:44 +0000
+
+    test-caps-file-transfer: expect ContactCapabilitiesChanged in a non-racy way
+
+commit 788dd4105660df6de1a7caee5cd8417f21488f79
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 17:31:22 +0000
+
+    file-transfer/test-ichat-receive-file.py: re-enable if no other llXMPP is running
+
+commit ad25a0c9081965c5ca1d8ff27bbcaf6f277eb9ed
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 17:30:59 +0000
+
+    salut_file_transfer_channel_new_from_stanza: force the 'from' address
+    
+    This is necessary to interop with iChat, which doesn't specify. This
+    appears to have regressed in November 2008, but the test was disabled,
+    so nobody noticed...
+
+commit 7b2aa8033044ef7c49303a4af4429b6a19b5421a
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 17:27:44 +0000
+
+    gibber_file_transfer_new_from_stanza and friends: raise a GError
+
+commit 1a44c03aa82541f38ca91e92f6f568c26a86fc56
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 16:04:40 +0000
+
+    avahi/test-muc-invite.py: use wait_for_contact_in_publish()
+
+commit 033bb4edc3aa0e150b8e7bc2488c7a2491e00170
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 16:04:22 +0000
+
+    Tests: factor out wait_for_contact_in_publish()
+
+commit 03688071f04208f2cf500512ac6c8247f7ffe6fd
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 15:53:56 +0000
+
+    Only skip file-transfer/test-ichat-receive-directory.py if needed
+
+commit ac6eef30becd54315ed8cd908f13e9eec112e4ef
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 15:53:21 +0000
+
+    SalutFtManager: allow salut_file_transfer_channel_new_from_stanza to fail
+
+commit 292c52e13cfef7aabe523cd145eede1bdede4133
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 15:53:07 +0000
+
+    salut_file_transfer_channel_new_from_stanza: don't use FALSE as a null pointer
+
+commit 90313495b1546a5134ddc77235f5ae327218e551
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 15:29:46 +0000
+
+    avahi/test-ichat-incoming-msg.py: enable if we're not running another Salut
+
+commit 93c7575637ed3b3663a2d17deccb5f2e97e67e6c
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-11-01 15:28:54 +0000
+
+    avahitest: add a method to check whether another Salut is running
+    
+    Some of the tests can fail if there is one.
+
+commit 2d24d3b662714f379592e35ce0ba26ed30631c2f
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-18 16:18:03 +0100
+
+    receive_presence_and_ask_caps: only match the IQ result, not random other IQs
+    
+    When running these tests on a live network, we can see queries from
+    other contacts, which this overly-broad expectation would match.
+
+commit 243711910a0e2a1f2fb62c6f39a303704ed45cd6
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-18 15:59:41 +0100
+
+    SalutDisco: echo @id in caps results
+
+commit 54c4095ae197d0c840a1d1938c4d255aa9feb318
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-18 12:56:32 +0100
+
+    Put Wocky debug information in test logs, now we use it
+
+commit a4d42fb98e4049eee0bee2e9469a4191f58df662
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-18 12:56:13 +0100
+
+    Add more information to stream events, based on Gabble
+    
+    - to and from_ are the same as name and remote_name, which are also kept
+    - iq_id on IQs
+    - presence_status on presences
+
+commit e81a81f343dc8488810710f6a58461fca42bc993
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-25 16:20:14 +0200
+
+    Announce for both ipv4 and ipv6 those entries created with AVAHI_PROTO_UNSPEC
+
+commit 47e13f5fdc1c342e925b400cdc823f97710513ad
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-25 14:10:00 +0200
+
+    Resolve to ipv6 addresses
+
+commit 83df5595eba196eab1418074f3dec0773798aed5
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-25 13:12:43 +0200
+
+    Add a .service file for the mock avahi service
+    
+    as recent versions of avahi-client expects it to be there.
+
+commit 93594c0f17ccfa9d5e62aad11da4d488721c17bf
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-22 18:30:33 +0200
+
+    Allow multiple removals of the same entry
+
+commit 8f507a22a32a2141abbe00baa2f81d9f5638c4f5
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 19:08:03 +0200
+
+    Implement EntryGroup.AddRecord
+    
+    Use it to lookup multicast groups for clique
+
+commit d5c3c7fccdc8db7a2453d4a9c6f9bed98ec365e0
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 17:50:16 +0200
+
+    Remove superfluous timeout_add to speed up tests
+
+commit e393717c71fb98170baa89a4ec5a026d7bcd4d20
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 17:31:28 +0200
+
+    Remove ServiceBrowser and ServiceResolver when their client disappears
+
+commit 84ac518af1149f11ed7f6b1fd1ae27bd4e7f71a5
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 17:22:48 +0200
+
+    Free entry groups when its client disappears
+
+commit e1890770b83d4c9538ade442d83adcfa14b79ea4
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 15:25:33 +0200
+
+    Preserve original exception in test
+
+commit c3af031143062b7431c747994eedd0b56b57e083
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 12:03:47 +0200
+
+    Emit ServiceBrowser.ItemRemove when an EntryGroup is freed
+
+commit 4cac324669d7744546741f6c78c6f2ce6e958b5d
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 11:54:58 +0200
+
+    Remove unimplemented methods because of clutter
+
+commit a6ded5eb4d586453142599c6d8b5aa9f7bf9e244
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 11:20:25 +0200
+
+    Properly get the local hostname and domain
+    
+    and resolve it to a real address
+
+commit facd128d30492156e659271352b5c2ece36d6471
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 11:00:17 +0200
+
+    Don't overwrite host and port if they didn't change
+
+commit 899351b0dda94455997ee5cb523077b0b36f8f4b
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-20 10:31:14 +0200
+
+    When a ServiceBrowser is created, emit ItemNew for every entry
+    
+    that matches.
+
+commit 06c7ae32288d16b282a3f6a10b502995db9c3f78
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-19 17:58:47 +0200
+
+    Refactor the state and logic into avahimock.Model
+    
+    which is called by the dbus methods and emits the appropriate signals
+
+commit eb6255d392d59f099024e7552a68bb5e013b7fbe
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-19 11:38:12 +0200
+
+    Implement some o.f.Avahi.*.Free methods
+
+commit 8b6cbd052584a52409351950b0374d82afb78105
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-19 10:48:17 +0200
+
+    Also emit ServiceResolver.Found when a record is updated
+
+commit 94733e1daa8874ab232c91d048e7f7215c8637bc
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-19 10:01:53 +0200
+
+    Implement o.f.Avahi.Server.ServiceResolverNew and emit
+    
+    ServiceBrowser.ItemNew and ServiceResolver.Found.
+
+commit 93e1acef5a3297a3f1d2609f7cb2bd4346fd0fb9
+Merge: e637925 ed363eb
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-18 17:06:01 +0100
+
+    Merge branch 'protocol'
+    
+    Reviewed-by: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+
+commit 44243b8c3b7bdf0f24367fa1c06df9f32d0b9aab
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 13:49:54 +0200
+
+    Implement emitting StateChanged in terms of SignalMessage
+
+commit e6379255daebc533d84f5e82fbc86dfbd412174c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 10:28:06 +0200
+
+    Preserve existing PYTHONPATH when running tests
+
+commit 91963b4df2ff519fafb38c5832065e601dbdc856
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 12:06:05 +0200
+
+    Implement o.f.Avahi.Server.ServiceBrowserNew
+
+commit 2edd4d741a42cebd86fa2b0d342118538c0929f3
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 12:05:24 +0200
+
+    Make entry group's object paths unique
+
+commit d3624f3edcc833c8bbf0582df1cffc0a738f9e20
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 10:28:27 +0200
+
+    Emit o.f.A.EntryGroup.StateChanged
+
+commit 4b1779eb3b4a37cd428bc4463f9c00b3a5608e5d
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-15 10:28:06 +0200
+
+    Preserve existing PYTHONPATH when running tests
+
+commit ed363ebe811bd6adbfe03c95c4909bccd607c489
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-01 14:13:57 +0100
+
+    Add a test for Protocol objects
+
+commit a1e965e5c36c0a2e66d266c04d993de50404741c
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-01 11:42:50 +0100
+
+    Add Protocol objects
+
+commit bf32c4eb6b1ad30d33a42dcda666fb2b53f268ed
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-01 12:38:47 +0100
+
+    All channel managers: implement type_foreach_channel_class
+
+commit a6d8e7856005e86b829fb452e972c662360fadc3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-09-23 16:52:04 +0100
+
+    Depend on telepathy-glib 0.12 release candidate, for Protocol etc.
+
+commit 9dbd9864fd9e0b3fb4badb638fb183d54047a45a
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-14 13:31:14 +0200
+
+    Implement o.f.A.EntryGroup.GetState
+
+commit 075914a2cf7afceb32fba2462328209df9c78ca6
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-14 12:47:23 +0200
+
+    Return expected values in o.f.Avahi.Server.GetAPIVersion and GetState
+
+commit a69372ddb701967d0faadbb8bfdfa874d9c8c801
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-14 12:46:30 +0200
+
+    Set DBUS_SYSTEM_BUS_ADDRESS before launching the CM process
+
+commit fbe4a4782ee22b373a322412bfbc7ef19c33e62c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-13 16:52:26 +0200
+
+    Implement o.f.Avahi.EntryGroup.AddService and Commit
+
+commit 71a00c2cbf7a4a19ee19b57795e5d4e98c43210b
+Merge: 54017f0 a9ef4a4
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-13 15:35:59 +0100
+
+    Merge branch 'wocky'
+    
+    Reviewed-by: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+
+commit a9ef4a4cef43ecf469d06ef5792359c0688ad7f4
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-13 15:04:36 +0100
+
+    Enable gtk-doc in distcheck so Wocky can also distcheck
+
+commit 789c6be33c7db6b8e1b4e0319f19a4e280cfd8be
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-13 14:52:13 +0100
+
+    GibberXmppStanza: include wocky-stanza.h in a way that works out-of-tree
+
+commit 74a80043531c0cca12a19d8e2d612f33fee7f8a2
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-13 13:39:45 +0200
+
+    Implement o.f.Avahi.Server.GetHostNameFqdn and GetDomainName
+
+commit ae31ed7c0ab1280285cfccbcae213a87163cf230
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-13 13:07:01 +0200
+
+    Implement o.f.Avahi.Server.EntryGroupNew
+
+commit 4559c4691e3f68cac18dba3990e367d16ba38d0f
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-13 13:06:22 +0200
+
+    Implement o.f.Avahi.Server.GetHostName
+
+commit f476cd509c630408f6fbb08abdc373c98877284c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-11 14:01:50 +0200
+
+    Add mock service implementing org.freedesktop.Avahi*
+
+commit 087e05ca156bf1b133de1d21f738a8cee7ec2be4
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-11 13:57:31 +0200
+
+    Make sure that the mock Avahi service is running
+    
+    ...before executing every test.
+
+commit 0d500b026d044c615e4e3a8219ae5fd773deba2c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-11 13:56:02 +0200
+
+    Move call to Avahi from the class definition to the constructor
+    
+    so we don't depend on Avahi on module import
+
+commit e214e31e95f68c7088950daaa6acc39f2eaa1173
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 15:24:34 +0100
+
+    Implement GibberXmppReader in terms of WockyXmppReader
+    
+    It has a different programming model (it emits signals rather than just
+    having a stanza queue) so instead of being the same, it's a subclass.
+
+commit 2dfe5319d5a3603a450717a271a59f8b575e0588
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 14:52:51 +0100
+
+    saluttest.exec_test_deferred: if make_connection fails, die
+    
+    Adapted from Will's commit 9071c1af4 in Gabble, although that one needs
+    to cope with multiple connections.
+
+commit 0febecdd02df4f4b73f2825159a6f6aa36e7b506
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 14:46:20 +0100
+
+    Replace GibberXmppWriter with WockyXmppWriter and some inlines
+
+commit aa933d09fda320cdafa99e6a2816f5071078015c
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-08 15:26:40 +0200
+
+    Use the temporary bus as the system bus in the avahi tests
+
+commit 3aad39ef4ea2aaf37a210800ef72570dcc197fd4
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 14:25:57 +0100
+
+    Fix a few remaining instances of stanza->node
+
+commit 7cf0935a252015bb9fd08466e8cef8cca9a4cabd
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 14:25:43 +0100
+
+    GibberXmppReader: cope with stanzas with no namespace
+    
+    Backported from WockyXmppReader.
+
+commit 8418b6f5cde587b444c45a308e8a8698e39b383f
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 13:42:34 +0100
+
+    Replace GibberXmppNode and GibberXmppStanza with WockyNode and WockyStanza
+    
+    Most of the API is similar enough to add a pile of #defines and not touch
+    application code. Exceptions:
+    
+    - wocky_node_each_attribute passes an extra argument to the callback,
+      so adjust GibberXmppWriter and test-xmpp-connection to cope
+    - WockyStanza->node doesn't exist, so use wocky_xmpp_stanza_get_top_node
+      a lot
+
+commit e6efc9a197db675f84df2e84ebb38e283f90ed22
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 13:39:13 +0100
+
+    Remove Gibber tests for things Wocky won't let us do anyway
+    
+    - nodes with a NULL name
+    - nodes with a NULL or omitted namespace
+
+commit 93e80f65abec276c7c2f3888665e23057b71152f
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 13:38:20 +0100
+
+    init and deinit wocky in the Gibber tests
+
+commit e73c51ad7414eb150dca9c7eb432a44edf469b2e
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 13:37:57 +0100
+
+    yet another set of WOCKY_CFLAGS
+
+commit 2f8d86cd0927d3f1f76bf62414357e117f4cb9bb
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 12:23:41 +0100
+
+    GibberXMPPNode test: don't change nodes' namespace
+
+commit 834d18332f3d585dcdba4abda430dcc2a59131ae
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 12:23:20 +0100
+
+    SalutTubeStream: don't change the namespace of a node after creation
+
+commit a880ca796c8fb9d3a761c6cd22f435617b3d6e68
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:48:27 +0100
+
+    Remove gibber_xmpp_stanza_new
+
+commit e55f92ff9b68b102f4b39895004ab4c5112eafac
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:38:48 +0100
+
+    Always create stanzas with a specified namespace
+    
+    Also create nodes that already have an XMLNS where possible.
+    
+    The Wocky equivalents enforce having an XMLNS.
+
+commit ec55ac9cd25a418468de7db819cc5a44dfadcec3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:34:50 +0100
+
+    gibber_xmpp_stanza_new_ns: add
+
+commit d8f2be17257d44cd50b0590937fa3e5fd9dfc7b3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:36:35 +0100
+
+    gibber_xmpp_node_new_ns: add
+
+commit b175d097d4e574ea2c4fe272bdc982dd83fbf4f3
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 12:01:47 +0100
+
+    Add Wocky CFLAGS to Gibber tests so we can use Wocky's constants
+
+commit 8b5cf4ba620eccfdc63146f7fb7cb9524ccf4620
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:18:28 +0100
+
+    Glue Wocky into the build system
+
+commit 64a0d8635871b9f85e335d05c65765774c99c497
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:04:23 +0100
+
+    Set up Wocky in autogen.sh
+
+commit 7cc3f4a29e1c106eafd1146ae5c630a939d1eeed
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-08 11:03:52 +0100
+
+    Add Wocky as a submodule
+
+commit 54017f0527fb4487e1ae386f7762af46272f83e7
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:58:07 +0100
+
+    Nano version for development branch
+
+commit 931c49c5eefede516a80d6721f49c134d2a652d9
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:57:24 +0100
+
+    Revert "Adjust configure.ac for stable branch"
+    
+    This reverts commit 9bd0a0719e394c42f8f95e29ce811360437a8016.
+
+commit 9bd0a0719e394c42f8f95e29ce811360437a8016
+Author: Simon McVittie <simon.mcvittie@collabora.co.uk>
+Date:   2010-10-07 15:57:00 +0100
+
+    Adjust configure.ac for stable branch
+
+commit 5f2c842b817732d0a77759139ee562150e7863c0
+Author: Tomeu Vizoso <tomeu.vizoso@collabora.co.uk>
+Date:   2010-10-06 19:00:23 +0200
+
+    Bump nano version to 0.4.0.1

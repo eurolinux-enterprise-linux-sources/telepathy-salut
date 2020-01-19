@@ -1,0 +1,2 @@
+PACKAGE_STRING = "Telepathy Salut 0.8.1"
+PLUGINS_ENABLED = True

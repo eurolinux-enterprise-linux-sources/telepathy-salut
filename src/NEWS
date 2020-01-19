@@ -1,0 +1,474 @@
+telepathy-salut 0.8.1 (2012-11-16)
+==================================
+
+Here are some crash fixes, and a pretty important fix which means we can
+talk to iChat again.
+
+• Fix an assertion failure in the OLPC activity manager on disconnect.
+  (Jonny)
+
+• Check parsing tube messages in a MUC succeeds, to avoid using an
+  uninitialized variable. (Will)
+
+• Don't crash when closing a roomlist channel. (Will)
+
+• fd.o#51527: fix interoperability with iChat (oops). This also fixes
+  fd.o#51528, a crash when messaged by a malformed JID such as
+  "wjt@bael (2)".  (Will)
+
+
+telepathy-salut 0.8.0 (2012-04-04)
+==================================
+
+This is the start of a new stable branch.
+
+Changes since 0.7.2:
+
+• Fix build with OLPC code enabled. (Jonny)
+
+• Fix MUC code to announce the user as a member of the MUC if it is
+  the creator. (Jonny)
+
+• Fix race in file transfer code which was giving the IO channel to
+  Gibber before it knew how to deal with it.. (Jonny)
+
+Summary of particularly noteworthy changes since 0.6.x:
+
+• The FileTransfer Metadata interface has been implemented.
+
+• Salut now builds on Android using 'androgenizer'.
+
+• Salut can now be built and used on Windows/MinGW32.
+
+telepathy-salut 0.7.2 (2012-03-26)
+==================================
+
+Enhancements
+• fd.o#46345 - Salut can now be built on Windows/MinGW32 (siraj)
+• fd.o#18530 - Support for IPv4 and IPv6 types for the local socket for
+  file transfer (tdfischer)
+• fd.o#47072 - Salut can now advertise itself on the network on Windows
+  using Apple's mDNSResponder (siraj)
+• fd.o#45716 - The plugin interface has been further adjusted to comply
+  with requirements of real-world plugins on Windows (Hei_Ku, oggis)
+• fd.o#47429 - Can discover remote contacts from the network on Windows
+  using Apple's mDNSResponder (siraj)
+• fd.o#47729 - File transfer support is now enabled on Windows (siraj)
+
+Fixes:
+• fd.o#31729 - The ContactList interface is now actually advertised as supported
+
+telepathy-salut 0.7.1 (2012-02-20)
+==================================
+
+The "y u no fill news file and leave it between me and git log" release.
+
+Enhancements:
+• fd.o#45716 - Salut now has a salut-plugins.so library, similarly to mission-control. This
+  enables plugins to link correctly as DLLs on Windows. This also means that plugins don't directly
+  access SalutConnections anymore, but instead invoke the same functionality through a
+  SalutPluginConnection GInterface. (siraj)
+• fd.o#42515 - Support for building on Android (Hei_Ku)
+• fd.o#45703 - Support for One Big Header Wocky (wjt)
+
+Fixes:
+• fd.o#44020 - Unix socket paths for MUC stream tubes too long
+• Almost all unit tests failing if IPv6 is not enabled in the kernel
+
+telepathy-salut 0.7.0 (2011-11-16)
+==================================
+
+This is the start of a new development branch that will lead to 0.8
+in roughly 6 months.
+
+Enhancements:
+
+• fd.o#42348: the Chan.I.FileTransfer.Metadata interface has been
+  implemented. (jonny)
+
+• Updated Wocky:
+  · The SASL auth server test now builds with new and old versions of
+    libsasl2.
+
+telepathy-salut 0.6.0 (2011-10-18)
+==================================
+
+The “the cleaning lady… cleans up… dust. She dusts. And she has weekends
+off, so… Monday. Right?” release. Please enjoy this refreshing stable
+branch.
+
+Enhancements since 0.5.2:
+
+• Salut implements the ContactList interface, which makes
+  TP_CONNECTION_FEATURE_CONTACT_LIST in telepathy-glib work with Salut!
+  (xclaesse)
+
+Big changes since 0.4.0:
+
+• Salut now mostly uses the Wocky XMPP library.
+
+• Protocol, ContactCapabilities and (half of) ContactInfo are
+  implemented.
+
+• Salut has grown a plugin API, rather like Gabble's.
+
+telepathy-salut 0.5.2 (2011-10-05)
+==================================
+
+Enhancements:
+
+ • fd.o#40035: the ContactInfo Connection interface has been
+   implemented, so extra information about contacts, like first and
+   last names, are now exposed in a nice way and can be shown in
+   clients. (wjt)
+
+Fixes:
+
+ • Ensure OLPC tests are included in releases. (jonny)
+
+ • Fix send_ll_pep_event public utility function to construct PEP
+   messages correctly. (jonny)
+
+Dependencies:
+
+ • xmldiff is no longer required for tests.
+
+telepathy-salut 0.5.1 (2011-07-07)
+==================================
+
+The “nyanit.com is high up in the referrals list” release. This release
+fixes a crash triggered by recent versions of telepathy-glib, and a
+crash triggered by portscanning yourself.
+
+Enhancements:
+
+ • More bits and pieces of Gibber have been replaced by Wocky. (jonny)
+
+Fixes:
+
+ • Assumptions made about the default value of
+   TpChannelIface:handle-type (which changed in a recent telepathy-glib
+   release) are now less specific, fixing assertion failures. (jonny,
+   sjoerd)
+
+ • Salut no longer crashes if you 'nmap localhost'. (fd.o#39018, jonny)
+
+ • The tests now pass with telepathy-glib >= 0.14.6, which corrected a
+   longstanding bug in MembersChangedDetailed which saluttest.py was
+   relying on. The tests should still work with older versions, too.
+   (wjt)
+
+
+telepathy-salut 0.5.0 (2011-05-03)
+==================================
+
+Enhancements:
+
+ * The wocky library used in telepathy-gabble has been added as a
+   submodule and is starting to replace bits of Gibber such As
+   GibberXmppNode → WockyNode, and GibberXmppStanza →
+   WockyStanza. Keep on reading for more. (smcv, jonny)
+
+ * The test suite now has a mock Avahi service, so running the tests
+   no longer uses the system avahi and therefore doesn't pop up
+   contacts on other users' contact lists. You can hit the actual
+   network if you want though, see tests/README. (tomeu, smcv, jonny)
+
+ * Implement ofdT.Protocol objects for exposed protocols. (smcv)
+
+ * Replace the capability channel manager interfaces with the new ones
+   already used in Gabble which make the caps situation a lot more
+   sane. (smcv)
+
+ * Implement ContactCapabilities. (jonny)
+
+ * fd.o#33833: Implement FileTransfer.FileURI (cassidy)
+
+ * Use Wocky's caps hashing code, and so throw out Salut's own code
+   for this. (jonny)
+
+ * Give Salut a plugin API, based on the Gabble one. The API consists
+   of a little bit of Salut, Wocky and tp-glib. Plugins can expose new
+   protocols and can add channel managers. Brill. (jonny)
+
+ * The C tests now use GLib instead of check. (stefw)
+
+ * Salut's XMPP connection manager has been replaced with Wocky's Meta
+   Porter. This is better in many ways. (jonny)
+
+ * Add salut_send_ll_pep_event() function to send a pep message (this
+   is basically the only step needed for link-local PEP
+   support). (jonny)
+
+Fixes:
+
+ * Ensure to reply to disco requests with the same id attribute and
+   other test reliability fixes. (smcv)
+
+ * fd.o#31665: use TpDBusDaemon, not tp_get_bus(). (smcv)
+
+Dependencies:
+
+ * xmldiff is now a required dependency otherwise the gibber tests
+   fail. It has always been required but it was never checked at
+   configure time.
+
+ * GLib ≥ 2.24 is now required.
+
+ * telepathy-glib ≥ 0.13.12 is now required.
+
+telepathy-salut 0.4.0 (2010-09-06)
+===================================
+
+The "a stable branch that doesn't go anywhere is the most stable of all"
+release.
+
+Fixes:
+
+* Remove the GibberResolver and all its infrastructure (smcv)
+* Use the normal, safer telepathy-glib priv idioms (smcv)
+* Add salut_connection_get_implemented_interfaces (smcv)
+* Make tests more robust (smcv)
+* Remove examples and OpenSSL support from libgibber (smcv)
+* remove SASL support (smcv)
+* remove now-unused MD5 implementation (smcv)
+* Remove the activity when its channel has been closed, as Gabble does (tomeu)
+
+telepathy-salut 0.3.13 (2010-08-19)
+===================================
+
+The "treitter has a list somewhere on the telepathy wiki if you're stuck"
+release.
+
+Enhancements:
+
+* Implement avatar requirements properties (Zdra)
+
+* Add a ActivityProperties.GetActivity method for retrieving an activity's room
+  handle from its id (tomeu)
+
+* Add a BuddyInfo.AddActivity method so activities can advertise themselves
+  without having to track all the other shared activities (tomeu)
+
+Fixes:
+
+* Update with-session-bus.sh from telepathy-glib, fixing a bashism (smcv)
+
+telepathy-salut 0.3.12 (2010-05-20)
+===================================
+
+The "maybe your browser has turned religious" release.
+
+Enhancements:
+
+* Merge back most of the portability improvements from Gabble's copy of Gibber
+  (smcv)
+
+* Use automake silent rules (--enable-silent-rules) instead of shave (smcv)
+
+Fixes:
+
+* fd.o #22970, Debian #565154: don't try to support credential-passing on
+  non-Linux platforms, fixing compilation there (smcv)
+
+* fd.o #27289: set the Properties flag on group channels for round-trip
+  reduction (cassidy)
+
+* fd.o #20732 (partial): allow the user to leave MUCs with RemoveMembers()
+  (smcv)
+
+* Implement the error path for ContactList channel requests correctly (smcv)
+
+* Fix compilation in the tr_TR.UTF-8 locale (Maiku)
+
+* Use the right timestamps on message delivery reports (Jonny)
+
+* Stop working around fd.o #15092, which was fixed in telepathy-glib (cassidy)
+
+* fd.o #26152: make critical warnings fatal by default (smcv)
+
+telepathy-salut 0.3.11 (2010-03-25)
+===================================
+The "Not really" release.
+
+Enhancements:
+* Implement TpMessageMixin and therefore the Channel.Interface.Messages.
+
+Fixes:
+* Fix strict aliasing warnings from gcc.
+* Fix assertion due to g_set_prgname being called twice.
+
+
+telepathy-salut 0.3.10 (2009-09-10)
+===================================
+The "The lampshade of doom" release.
+
+Requirements:
+* telepathy-glib >= 0.7.36 is now required so Salut emits the correct
+  D-Bus errors. This version is also requiered as we implement the
+  new tube API and the Debug interface.
+
+Enhancements:
+* Implement the final, stable new API for tubes. The NewConnection signal has
+  been renamed to NewRemoteConnection and now has a Connection_ID argument.  The
+  StreamTube channel type now implements the NewLocalConnection and
+  ConnectionClosed signals. DBusTube.{Offer,Accept} now have an access_control
+  argument.
+
+* Use ContactCapabilities draft to communicate tube support.
+
+* In StreamTube, UNIX sockets created with the Localhost access control are
+  usable by any user of the system.
+
+* Implement Debug interface.
+
+Fixes:
+* Include muc tube channels in Requests's Channels property.
+
+* Implement setting presence before the connection is
+  established. This allows salut to be used with mission control >=
+  5.2.2.
+
+* Make the "dnd" presence actually correspond to the correct telepathy
+  presence type.
+
+
+telepathy-salut 0.3.9 (2009-04-02)
+==================================
+The "My, what big branches you have, Grandma!" release.
+
+Enhancements:
+* Implement Connection.Interface.ContactCapabilities.DRAFT
+* Implement tube service specific contact capabilities.
+* Implement file transfer contact capabilities.
+* Implement Channel.Type.StreamTube.DRAFT
+
+Fixes:
+* As defined in the spec, {Accept,Provide}File should return an 'ay' and not
+  a string as UNIX socket address.
+* Fix a crash with newer versions of libsoup
+* Fix file transfer over IPv6 (b.fd.o #19163)
+
+
+telepathy-salut 0.3.8 (2009-02-17)
+==================================
+The "Thursday as if I walked in the dessert" release.
+
+Enhancements:
+* Switched to the stable version of the FileTransfer interface. Clients
+  (Empathy, Sugar...) have to be modified to use the stable interface instead
+  of the DRAFT one. Just the interface name has been renamed so changes
+  should be trivial.
+
+Fixes:
+* Fix a crash when receiving an incoming XMPP connection from a IPv6 address.
+
+
+telepathy-salut 0.3.7 (2009-01-05)
+==================================
+The "Post-Waffle Hibernation" release.
+
+Requirements:
+* libsoup-2.4 (instead of libsoup-2.2)
+
+Enhancements:
+* State of pending file transfer channels is now automatically changed to
+  "Cancelled" if peer is disconnected.
+
+Fixes:
+* Uses libsoup 2.4 instead of the obsolete 2.2 version (b.fd.o #18891).
+* Don't crash if the XMPP connection is disconnected during a file transfer.
+* Fix a race in stream tubes causing potential data lost.
+* Fix various leaks including one leading to a crash (b.fd.o #19181).
+
+
+telepathy-salut 0.3.6 (2008-12-02)
+==================================
+The "I accidentally 93MB of .rar files" release.
+
+Requirements:
+
+* glib >= 2.16
+* dbus >= 1.1.0
+* telepathy-glib >= 0.7.17
+* libsoup-2.2
+
+Enhancements:
+
+* Implement org.freedesktop.Telepathy.Channel.Type.FileTransfer.DRAFT.
+  This means you can now send files to your Salut contacts. Current
+  implementation uses OOB (XEP-0066) and is fully compatible with iChat.
+* All channels are now requestable using the new
+  org.freedesktop.Telepathy.Connection.Interface.Requests interface.
+
+Fixes:
+
+* Assertion failed in gibber_multicast_transport_disconnect when closing
+  a local pending room (b.fd.o #18552).
+
+
+telepathy-salut 0.3.5 (2008-09-17)
+==================================
+The "Please don't flood my network" release.
+
+This release fixes an annoying bug causing Salut announcing all the OLPC
+activities which are present on the network. You should consider upgrading
+if they are OLPC XO's running on your network.
+
+Enhancements:
+
+* Add a test framework
+
+Fixes:
+
+* Only announce OLPC activity we actually joined (dev.laptop.org #8441)
+
+telepathy-salut 0.3.4 (2008-08-20)
+==================================
+The "a ball of hair" release.
+
+Requirements:
+
+* telepathy-glib >= 0.7.14
+
+Enhancements:
+
+* Implement the Contacts interface
+* Implement the SimplePresence interface
+* Implement spec 0.17.9 (Add various properties to all channels)
+
+telepathy-salut 0.3.3 (2008-06-05)
+==================================
+This unstable release mainly brings an abstraction of the avahi layer making
+it easier to use different implementions of mdns or other completely different
+service discovery implementations. Furthermore various small bugfixes has been
+done and the complete code-base has been converted to telepathy coding style.
+
+telepathy-salut 0.3.2 (2008-04-09)
+==================================
+This unstable release doesn't contain any new features or major changes but
+fixes various Clique and tube bugs. These are basically the same fixes as in
+the 0.2.3 stable release.
+
+telepathy-salut 0.3.1 (2008-02-15)
+==================================
+This unstable release fixes few Clique crashers and some others issues.
+Most of these bugs were discovered thanks to hyperactivity, a
+collaboration stress testing tool we are developing for the OLPC project.
+
+This new version also introduces a new DNS resolver in Gibber but it's not
+used in Salut yet.
+
+telepathy-salut 0.3.0 (2008-01-08)
+==================================
+This is the first release in the unstable 0.3 series.
+
+Apart from some small bugfixes this updates the Avatar interface to comply with
+the current telepathy spec and uses avahi-gobject instead of the internal avahi
+gobject wrappers. This means at least avahi 0.6.22 is needed for this version.
+
+As salut doesn't have persistent avatar storage, the clients need to ensure the
+avatar is set upon each connection. See sf bug #1825366 [0] for the suggested
+changes to telepathy-mission-control.
+
+[0] http://sourceforge.net/tracker/index.php?func=detail&aid=1825366&group_id=190214&atid=932444

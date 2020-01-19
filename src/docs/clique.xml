@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='xep.xsl'?>
+<xep>
+<header>
+  <title>Clique - link-local chat rooms</title>
+  <abstract>A protocol for serverless link-local multi-user chat over
+    reliable multicast.</abstract>
+  <legal>Copyright (c) 2007 Collabora Limited. This document may be
+    distributed under the same terms as the Telepathy specification.</legal>
+  <number>proto-clique</number>
+  <status>ProtoXEP</status>
+  <type>Extension</type>
+  <sig>Standards</sig>
+  <approver>Telepathy project</approver>
+  <dependencies>
+    <spec>XMPP Core</spec>
+    <spec>XEP-0174</spec>
+  </dependencies>
+  <supersedes/>
+  <supersededby/>
+  <shortname>NOT YET ASSIGNED</shortname>
+  <author>
+    <firstname>Simon</firstname>
+    <surname>McVittie</surname>
+    <email>simon.mcvittie@collabora.co.uk</email>
+    <jid>simon.mcvittie@collabora.co.uk</jid>
+  </author>
+  <revision>
+    <version>0.0.1</version>
+    <date>2007-11-02</date>
+    <initials>smcv</initials>
+    <remark><p>First draft.</p></remark>
+  </revision>
+</header>
+<section1 topic='Introduction' anchor='intro'>
+  <p>Clique is an extension of XEP-0174 to support multi-user chat.
+    It consists of the following components:</p>
+
+  <ul>
+    <li>a binary multicast message-passing protocol sometimes referred to
+      as rMulticast, with retransmission/reliability,
+      fragmentation/reassembly, causal ordering, and reliable membership
+      semantics, in which messages are associated with a stream ID in the
+      range 0 to 65535</li>
+    <li>XMPP-like XML messages sent with stream ID 0</li>
+    <li>optional auxiliary data (e.g. Tubes) sent with stream IDs
+      1-65535, with semantics signalled by XML messages in stream 0</li>
+  </ul>
+
+  <p>The chat room behaves a lot like XMPP, and namespaces used in XMPP
+    have their usual semantics. However, instead of a stream of XML
+    as in XMPP, Clique's XMPP-like messages are individually well-formed
+    XML documents.</p>
+
+  <p>XEP-0174 instance names are used for identification in a chat
+    room.</p>
+
+  <p>The Clique XML namespace can also be used for certain elements sent
+    over XEP-0174 unicast TCP streams, for instance to send invitations.</p>
+</section1>
+<section1 topic='Requirements' anchor='reqs'>
+  <p>STRONGLY RECOMMENDED.</p>
+</section1>
+<section1 topic='Glossary' anchor='glossary'>
+  <p>OPTIONAL.</p>
+</section1>
+<section1 topic='Use Cases' anchor='usecases'>
+  <p>FIXME: there need to be some examples of the actual Clique protocol
+    here</p>
+
+  <section2 topic='Advertising a public link-local chatroom via mDNS'>
+    <p>In this example a chatroom called "Witchcraft" uses the multicast
+      group 239.255.71.66, port 13251 (arbitrarily chosen).</p>
+    <p>We recommend that chatrooms use a random high port number
+      in a random multicast group in the range 239.255.71.x.</p>
+    <code>
+      <![CDATA[
+        ; A dummy A record for the chatroom's multicast group
+        Witchcraft._clique._udp.local. IN A 239.255.71.66
+
+        ; A DNS-SD service of type _clique._udp
+        _clique._udp.local. IN PTR Witchcraft._clique._udp.local.
+        Witchcraft._clique._udp.local. IN SRV 13251 ._clique._udp.local.
+
+        ; For future expansion - implementations SHOULD NOT resolve this,
+        ; unless they implement a future version of this protocol that
+        ; defines some TXT keys for _clique._udp
+        Witchcraft._clique._udp.local. IN TXT "txtvers=0"
+      ]]>
+    </code>
+  </section2>
+
+  <section2 topic='Inviting a contact to a public or private room'>
+    <p>In this example crone@desktop invites hecate@broom to the
+      chatroom given above.</p>
+    <p>This would work just as well if the chatroom was not advertised
+      in mDNS; this can be used to make "private" chatrooms. Note however
+      that anyone with a network traffic sniffer can see the chatroom
+      itself.</p>
+    <code>
+      <![CDATA[
+      <!-- Sent via XEP-0174 unicast TCP from crone@desktop to
+           hecate@broom -->
+      <message from='crone@desktop' to='hecate@broom'>
+        <invite xmlns='http://telepathy.freedesktop.org/xmpp/clique'>
+          <roomname>Witchcraft</roomname>
+          <address>239.255.71.66</address>
+          <port>13251</port>
+          <!-- reason is optional -->
+          <reason>We need to plot Macbeth's doom, but the XMPP server is
+            down</reason>
+        </invite>
+        <!-- Displayed by iChat and other non-Clique-compatible clients -->
+        <body>You got a Clique chatroom invitation</body>
+      </message>
+      ]]>
+    </code>
+  </section2>
+</section1>
+<section1 topic='Business Rules' anchor='rules'>
+  <p>OPTIONAL.</p>
+</section1>
+<section1 topic='Implementation Notes' anchor='impl'>
+  <p>OPTIONAL.</p>
+</section1>
+<section1 topic='Internationalization Considerations' anchor='i18n'>
+  <p>OPTIONAL.</p>
+</section1>
+<section1 topic='Security Considerations' anchor='security'>
+  <p>REQUIRED.</p>
+</section1>
+<section1 topic='IANA Considerations' anchor='iana'>
+  <p>REQUIRED.</p>
+</section1>
+<section1 topic='XMPP Registrar Considerations' anchor='registrar'>
+  <p>None.</p>
+</section1>
+<section1 topic='XML Schema' anchor='schema'>
+  <code>
+    <![CDATA[
+    <xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+      targetNamespace='http://telepathy.freedesktop.org/xmpp/clique'
+      xmlns='http://telepathy.freedesktop.org/xmpp/clique'
+      elementFormDefault='qualified'>
+
+      <!-- LLMUC invitation. Sent over the IM socket -->
+      <xs:element name='invite'>
+        <xs:complexType>
+          <xs:all>
+            <xs:element name='roomname' type='xs:string'/>
+            <xs:element name='reason' minOccurs='0' type='xs:string'/>
+
+            <xs:element name='address' type='xs:string'/>
+            <xs:element name='port' type='xs:unsignedShort'/>
+
+            <!-- In OLPC builds, <properties> with NS_OLPC_ACTIVITY_PROPS
+              goes here -->
+            <xs:any minOccurs='0' maxOccurs='unbounded' namespace='##other'>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:schema>
+    ]]>
+  </code>
+</section1>
+</xep>
